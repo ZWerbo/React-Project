@@ -1,0 +1,82 @@
+// .modal-background {
+//     position: fixed;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+//     left: 0;
+//     background: rgba(0, 0, 0, 0.7);
+//     z-index: 10;
+//   }
+  
+//   .modal-child {
+//     background-color: white;
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     height: 448px;
+//     width: 400px; 
+//     border-radius: 5px;
+//   }
+  
+//   .modal-x-button {
+//     cursor: pointer;
+//     background-color: rgb(220, 20, 60);
+//     font-size: 20px;
+//     width: 30px;
+//     height: 30px;
+//     font-family: 'Commissioner', sans-serif;
+//     color: white;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     position: absolute;
+//     left: 90%;
+//     top: 2%;
+//     border-radius: 3px;
+//   }
+  
+//   .modal-x-button:hover {
+//     opacity: 70%;
+//     background-color: darkred;
+//   }
+
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 440px;
+  width: 380px; 
+  border-radius: 5px;
+  overflow-y: auto;
+  padding: 40px 30px;
+}
+
+.session-form h2 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.close-x {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+

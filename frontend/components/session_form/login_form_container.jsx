@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import { Link } from "react-router-dom";
 import { login } from "../../actions/session_actions";
-import SessionForm from "./session_form";
+import LoginForm from "./login_form";
 
 const mapSTP = ({ errors }) => {
     return {
@@ -14,10 +14,16 @@ const mapSTP = ({ errors }) => {
 
 const mapDTP = dispatch => {
     return {
-        processForm: (user) => dispatch(login(user))
+        login: (user) => dispatch(login(user)),
+        action: () => dispatch(logout())
     }
 }
 
-export default connect(mapSTP, mapDTP)(SessionForm)
+
+export default connect(mapSTP, mapDTP)(LoginForm)
+
+
+
+
 
 
