@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
             login(@user)
             render "api/users/show"
         else
-            render json: ["cant get it"]
+            render json: ["Username or password can't be blank"], status: 401
         end
     end
 
@@ -17,7 +17,7 @@ class Api::SessionsController < ApplicationController
             logout
             render "api/users/show"
         else 
-            render json: ['NoOneIsInIt']
+            render json: ['NoOneIsInIt'], status: 404
         end
     end
 

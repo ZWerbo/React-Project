@@ -19,12 +19,14 @@ import { Link } from "react-router-dom";
 // }
 
 
-const Greeting = ({ currentUser, logout }) => {
+const Greeting = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <nav className="login-signup">
-      <Link to="/login">Login</Link>
+      {/* <Link to="/login">Login</Link> */}
+      <button onClick={() => openModal('login')}>Login</button>
       &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
+      {/* <Link to="/signup">Sign up!</Link> */}
+      <button onClick={() => openModal('signup')}>Signup</button>
       <button className="header-button" onClick={logout}>Log Out</button>
     </nav>
   );

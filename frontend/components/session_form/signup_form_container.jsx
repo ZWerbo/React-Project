@@ -1,13 +1,16 @@
 import { connect } from "react-redux";
 import React from "react";
 import { Link } from "react-router-dom";
-import { signup } from "../../actions/session_actions";
+import { signup, clearSessionError } from "../../actions/session_actions";
 import SessionForm from "./signup_form";
+import { closeModal } from "../../actions/modal";
 
 
-const mapSTP = ({ errors }) => {
+
+const mapSTP = state => {
     return {
-        errors: errors.session,
+        // errors: errors.session,
+        errors: state.errors.session,
         formType: 'signup',
         navLink: <Link to='/login'>log in!</Link>
     }
@@ -15,7 +18,14 @@ const mapSTP = ({ errors }) => {
 
 const mapDTP = dispatch => {
     return {
-        signup: (user) => dispatch(signup(user))
+        signup: (user) => dispatch(signup(user)),
+        otherForm: (
+            <button onClick={() => dispatch(openModal('signup'))}>
+              Signup
+            </button>),
+        closeModal: () => dispatch(closeModal()),
+        clearErrors: () => dispatch(clearSessionError())
+
     }
 }
 

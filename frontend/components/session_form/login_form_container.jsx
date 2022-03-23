@@ -3,11 +3,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { login } from "../../actions/session_actions";
 import LoginForm from "./login_form";
+import { openModal, closeModal } from "../../actions/modal";
 
-const mapSTP = ({ errors }) => {
+const mapSTP = state => {
     return {
-        errors: errors.session,
+        errors: state.errors.session,
+        // errors: errors.session,
         formType: 'login',
+        demo: {
+            username: 'zachwerb',
+            password: 'password123'
+        },
         navLink: <Link to="/signup">Sign up instead</Link>
     }
 }
@@ -15,7 +21,13 @@ const mapSTP = ({ errors }) => {
 const mapDTP = dispatch => {
     return {
         login: (user) => dispatch(login(user)),
-        action: () => dispatch(logout())
+        action: () => dispatch(logout()),
+        otherForm: (
+            <button onClick={() => dispatch(openModal('login'))}>
+              Signup
+            </button>
+          ),
+          closeModal: () => dispatch(closeModal())
     }
 }
 

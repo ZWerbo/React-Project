@@ -1,0 +1,36 @@
+.demo-login {
+    width: 50%;
+    height: 50px;
+    margin-bottom: 10px;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: .05rem solid #d8d9db;
+    cursor: pointer;
+    &:hover {
+        border: 2px solid #a1232c;
+        transition: 200ms;
+    }
+}
+
+.close-x {
+    position: absolute;
+    right: 25px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.login-input {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: .05rem solid #d8d9db;
+    &:hover, &:focus {
+        border: .05rem solid darkgray;
+        outline: .05rem solid darkgray;
+        transition: 200ms;
+    }
+}
+

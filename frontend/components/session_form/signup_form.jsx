@@ -1,5 +1,6 @@
 import React from "react";
-import { logout } from "../../utils/session_api_util";
+import { login, logout } from "../../utils/session_api_util";
+import { Link } from "react-router-dom";
 
 
 
@@ -14,6 +15,11 @@ class SignupForm extends React.Component {
         this.handleSubmit= this.handleSubmit.bind(this)
     
     }
+    componentDidMount() {
+      this.props.clearErrors();
+    }
+
+
 
     update(field) {
         return e => this.setState({
@@ -23,21 +29,40 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.clearErrors
         const user = Object.assign({}, this.state)
         this.props.signup(user)
     }
 
+    // renderErrors() {
+    //     return(
+    //         <ul>
+    //             {this.props.errors.map((error, i) => (
+    //                 <li key={`error-${i}`}>
+    //                     {error}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     )
+    // }
+
     renderErrors() {
-        return(
-            <ul>
-                {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
+      const { errors } = this.props
+      return(
+        <ul className ="session-errors">
+          {(errors.length === 0) ? (
+            null
+          ) : (
+            errors.map((error, i) => (
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+            ))
+          )}
+        </ul>
+      );
     }
+
 
 
     render(){
@@ -46,7 +71,7 @@ class SignupForm extends React.Component {
             <form onSubmit={this.handleSubmit} className="signup-form-box">
               <br/>
               Please {this.props.formType} or {this.props.navLink}
-              {this.renderErrors()}
+              { this.renderErrors() }
               <div className="login-form">
                 <br/>
                 <label>Username:
@@ -74,6 +99,8 @@ class SignupForm extends React.Component {
                 </label>
                 <br/>
                 <input className="session-submit" type="submit" value="Sign up" />
+
+              <Link to='/login' onClick={this.props.clearSessionErrors}>Have an account? Login</Link>
               </div>
             </form>
           </div>
