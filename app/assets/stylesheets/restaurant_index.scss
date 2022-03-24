@@ -1,0 +1,42 @@
+
+.restaurant-index-header{
+    width: 260px;
+}
+
+
+ .restaurant-index-inside {
+    margin: 20px;
+    border: solid 1px red;
+    width: 260px; 
+    height: 260px; 
+    text-align: center;
+    position: relative;
+    cursor: cursor;
+
+}
+
+.restaurant-index-inside:hover {
+    opacity: 50%;
+    cursor: pointer;
+
+}
+.restaurant_index_outside {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+
+.image-index {
+    width: 260px;
+    height: 100px;
+    object-fit: cover;
+    
+}
+
+.link1 {
+    width: 260px;
+    height: 260px;
+    text-decoration: none;
+    color: black;
+}

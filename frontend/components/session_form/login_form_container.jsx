@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React from "react";
 import { Link } from "react-router-dom";
-import { login } from "../../actions/session_actions";
+import { login, clearSessionError } from "../../actions/session_actions";
 import LoginForm from "./login_form";
 import { openModal, closeModal } from "../../actions/modal";
 
@@ -27,7 +27,8 @@ const mapDTP = dispatch => {
               Signup
             </button>
           ),
-          closeModal: () => dispatch(closeModal())
+          closeModal: () => dispatch(closeModal()),
+          clearErrors: () => dispatch(clearSessionError())
     }
 }
 

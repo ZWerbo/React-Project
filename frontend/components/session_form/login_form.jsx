@@ -8,10 +8,15 @@ class LoginForm extends React.Component {
         this.handleDemo = this.handleDemo.bind(this)
     }
 
+    componentDidMount() {
+      this.props.clearErrors()
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state)
-        this.props.login(user).then(this.props.closeModal())
+        this.props.login(user)
+        // .then(this.props.closeModal())
         // this.props.history.push
     }
 
@@ -28,17 +33,6 @@ class LoginForm extends React.Component {
     }
 
 
-    // renderErrors() {
-    //     return(
-    //         <ul>
-    //             {this.props.errors.map((error, i) => (
-    //                 <li key={`error-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     )
-    // }
 
     renderErrors() {
         const { errors } = this.props
