@@ -7,7 +7,7 @@ const mSTP = state => {
     return {
         currentUser: state.session.id,
         searchResult: state.entities.search,
-        // capTerms: Object.values(state.entities.search)
+        capTerms: Object.values(state.entities.search)
     }
 }
 
