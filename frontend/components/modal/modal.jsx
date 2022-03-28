@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import LoginFormContainer from "../session_form/login_form_container";
 import SignupFormContainer from "../session_form/signup_form_container";
 import { closeModal } from "../../actions/modal";
+import EditReviewFormContainer  from "../review/edit_review_form_container";
+import ReviewFormContainer from "../review/review_form_container";
 
 
-const Modal = ({modal, closeModal}) => {
+const Modal = ({modal, closeModal, ownProps}) => {
     if (!modal) {
       return null;
     }
@@ -17,6 +19,12 @@ const Modal = ({modal, closeModal}) => {
       case 'signup':
         component = <SignupFormContainer />;
         break;
+      case 'edit':
+        component = <EditReviewFormContainer ownProps={ownProps} />;
+        break
+      case 'write':
+        component = <ReviewFormContainer ownProps={ownProps} />
+        break
       default:
         return null;
     }
@@ -29,9 +37,10 @@ const Modal = ({modal, closeModal}) => {
     );
   }
   
-  const mapStateToProps = state => {
+  const mapStateToProps = (state, ownProps) => {
     return {
-      modal: state.ui.modal
+      modal: state.ui.modal,
+      ownProps: ownProps
     };
   };
   

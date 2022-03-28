@@ -14,6 +14,9 @@ User.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 Restaurant.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('restaurants')
+Review.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
+
 
 
 user1 = User.create(username:'zachwerb', email:'werbo@gmail.com', password:'password123')
@@ -32,7 +35,7 @@ file1 = URI.open('https://opentable-zach-seeds.s3.amazonaws.com/spaghetti.jpeg')
 rest1.photos.attach(io: file1, filename: 'spaghetti.jpeg')
 
 rest2 = Restaurant.create!(
-    name: 'SuperKewlRestaurant', 
+    name: 'Super Kewl Restaurant', 
     description: 'The chef constantly travels into central oregon to get the best beef he possible. The burger is divine. Open all day basically!', 
     hours: '12pm to 10pm',
     cuisine: 'New American',
@@ -51,3 +54,53 @@ rest3 = Restaurant.create!(
 
 file3 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/sushi.jpeg")
 rest3.photos.attach(io: file3, filename: 'sushi.jpeg')
+
+rev1 = Review.create!(
+    body: 'food was excellent! filled my gullet with delicious sushi',
+    rating: '5',
+    author_id: user1.id,
+    restaurant_id: rest3.id
+)
+
+rev2 = Review.create!(
+    body: 'Ive got marinara on my sweater already',
+    rating: '4',
+    author_id: user1.id,
+    restaurant_id: 'rest1.id'
+)
+
+rev3 = Review.create!(
+    body: 'Food was not super kewl, i almost got sick.',
+    rating: '1',
+    author_id: user1.id,
+    restaurant_id: rest2.id
+)
+
+rev4 = Review.create!(
+    body: 'My friend almost got sick, but I did not, it was aight.',
+    rating: '3',
+    author_id: user2.id,
+    restaurant_id: rest2.id
+)
+
+rev5 = Review.create!(
+    body: 'Supreme Crunch rolls did me in.',
+    rating: '5',
+    author_id: user2.id,
+    restaurant_id: rest3.id
+)
+
+rev6 = Review.create!(
+    body: 'I love spaghetti, bro',
+    rating: '5',
+    author_id: user3.id,
+    restaurant_id: rest1.id
+)
+
+rev7 = Review.create!(
+    body: 'I love spaghetti also bro :-) ',
+    rating: '5',
+    author_id: user4.id,
+    restaurant_id: rest1.id
+)
+

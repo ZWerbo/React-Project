@@ -1,0 +1,77 @@
+.index-page-search-box {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,39,219,1) 53%, rgba(0,212,255,1) 100%);
+     height: 350px;
+
+ }
+
+ .image-search-box {
+     z-index: 100;
+ }
+
+ .Find-your-table-search {
+    color: white;
+    text-align: center;
+    padding-top: 60px;
+  }
+
+  .find-table-box {
+    display: flex;
+    justify-content: center;
+  }
+
+
+.search-bar-input-date {
+    cursor: pointer;
+    height: 49px; 
+    width: 153px; 
+    border: 1px solid lightgray;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 18px;
+    padding-left: 25px;
+}
+.search-bar-input-time {
+    cursor: pointer;
+    height: 49px; 
+    width: 153px; 
+    border: 1px solid lightgray;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 18px;
+    padding-left: 25px;
+}
+.search-bar-people-dropdown{
+    cursor: pointer;
+    height: 49px;
+    width: 153px;
+    border: 1px solid lightgray;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 18px;
+    padding-left: 25px;
+}
+
+.search-input-searchbar {
+    cursor: pointer;
+    height: 49px;
+    width: 200px;
+    border: 1px solid lightgray;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 12px;
+    padding-left: 25px;
+}
+
+.search-bar-component-container {
+    text-align: center;
+}
+
+.search-bar-button {
+    margin-left: 10px;
+    cursor: pointer;
+    height: 49px; 
+    width: 153px; 
+    border-radius: 5px;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 18px;
+    border: none;
+    background-color: rgb(220, 20, 60);
+    color: white;
+}

@@ -5,7 +5,7 @@ import { login, clearSessionError } from "../../actions/session_actions";
 import LoginForm from "./login_form";
 import { openModal, closeModal } from "../../actions/modal";
 
-const mapSTP = state => {
+const mapSTP = (state) => {
     return {
         errors: state.errors.session,
         // errors: errors.session,

@@ -9,6 +9,10 @@ import Modal from "./modal/modal.jsx";
 import RestaurantIndexContainer from "./restaurant/restaurant_index_container";
 import RestaurantShowContainer from "./restaurant/restaurant_show_container";
 import SearchBar from "./searchbar/searchbar";
+import ReviewIndexContainer from "./review/review_index_container";
+import CreateReview from "./review/review_form";
+import ReviewFormContainer from "./review/review_form_container";
+import EditReviewFormContainer from "./review/edit_review_form_container";
 
 const App = () => (
   <div>
@@ -22,8 +26,14 @@ const App = () => (
         <GreetingContainer />
     {/* <div className="index-page-search-box"></div> */}
     <Route exact path='/' component={SearchBar} />
+    <Route exact path='/restaurants/:restaurantId/review' component={SearchBar} />
     <Route exact path='/' component={RestaurantIndexContainer} />
+    <Route exact path="/restaurants/:restaurantId" component={Modal}/>
     <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer}/>
+   
+    {/* <Route exact path="/restaurants/:restaurantId/review" component={ReviewFormContainer}/> */}
+    
+    {/* <Route exact path="/restaurants/:restaurantId" component={ReviewIndexContainer}/> */}
   </div>
 );
 
