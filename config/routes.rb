@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:index, :show] do
     end
     resources :reviews 
-
+    resources :reservations
   end
 
   root "static_pages#root"

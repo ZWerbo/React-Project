@@ -7,5 +7,10 @@ class Restaurant < ApplicationRecord
         foreign_key: :restaurant_id,
         class_name: :Review
 
+    has_many :reservations,
+        foreign_key: :restaurant_id,
+        class_name: :Reservation
+
+    
 
 end

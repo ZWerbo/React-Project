@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
             <div>
 
                 {/* <img  className="image-search-box" src="https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F3ca4ee98-4142-4a9d-b684-eb96d883de40.jpg?fit=scale-down&source=next&width=700" alt="" /> */}
-            <div className="index-page-search-box">
+            <div className="index-page-search-box" >
                 <div className="find-table-box">
                <h1 className="Find-your-table-search">
                 Find your table for your next occasion
@@ -54,6 +54,7 @@ class SearchBar extends React.Component {
                     <button className="search-bar-button">Lets go</button>
                    </form>
                </div>
+                {/* <img  className="index-page-search-box" src="https://images.adsttc.com/media/images/54f7/bf94/e58e/cee8/4d00/0234/large_jpg/4.jpg?1425522572" alt="" /> */}
             </div>
 
 

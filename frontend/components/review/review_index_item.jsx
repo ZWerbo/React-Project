@@ -1,7 +1,9 @@
 import React from "react";
 import { openModal } from "../../actions/modal";
-
-
+import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { CgProfile } from 'react-icons/cg'
+import { AiFillStar } from 'react-icons/ai'
 class ReviewIndexItem extends React.Component {
     constructor(props) {
         super(props)
@@ -17,15 +19,20 @@ class ReviewIndexItem extends React.Component {
 
     render() {
         // var deleteButton = if (currentUserId === this.props.review.author_id)
+      
         var deleteButton;
         var editButton;
         if (this.props.currentUserId === this.props.review.author_id) {
-           deleteButton = <div className="delete-button-container"><button className="delete-button" onClick={() => this.props.deleteReview(this.props.review.id)}>delete</button> </div>
-           editButton =   <div className="delete-button-container"> <button className="edit-button" onClick={() => this.props.openModal('edit')}>Edit</button> </div>
+           deleteButton = <div className="delete-button-container"><button className="delete-button" onClick={() => this.props.deleteReview(this.props.review.id).then(window.location.reload())}>delete</button> </div>
+           editButton =   <div className="delete-button-container"> <Link to={`/restaurants/${this.props.review.restaurant_id}/review/${this.props.review.id}`}>  <button className="edit-button">Edit</button>   </Link> </div> 
         }
+
+        // console.log([...Array(this.props.review.rating)])
+
          return (
 
             <div className="single-review-container">
+                <CgProfile className="cgProfileReview" />
                 <div className="first-review-box">
         {
             this.props.users.map(user => {
@@ -33,8 +40,12 @@ class ReviewIndexItem extends React.Component {
             })
         }
                 </div>
+
                 <div className="second-review-box">
-                    {this.props.review.rating}
+                {[...Array(this.props.review.rating)].map(star => {
+                    return <AiFillStar color="red" />
+                } ) }
+                    
                             <br />
                             <br />
                     {this.props.review.body}
@@ -43,7 +54,11 @@ class ReviewIndexItem extends React.Component {
             <br />
 
                 <div className="third-review-box">
-                {editButton} {deleteButton} 
+           
+                {editButton} 
+            
+                
+                {deleteButton} 
 
                 </div>
 
@@ -53,4 +68,4 @@ class ReviewIndexItem extends React.Component {
     }
 }
 
-export default ReviewIndexItem
+export default withRouter(ReviewIndexItem)

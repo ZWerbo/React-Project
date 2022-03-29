@@ -10,6 +10,7 @@ class RestaurantIndex extends React.Component {
     }
     componentDidMount() {
         this.props.fetchAllRests()
+        this.props.fetchAllReviews()
     }
 
 
@@ -19,7 +20,9 @@ class RestaurantIndex extends React.Component {
         return (
             <div className="restaurant_index_outside">
                 {
-                    this.props.restaurants.map((restaurant) => { return <RestaurantIndexItem restaurant={restaurant} key={restaurant.id}/>  })
+                    this.props.restaurants.map((restaurant) => { return <RestaurantIndexItem restaurant={restaurant} reviews={this.props.reviews}
+                    
+                    key={restaurant.id}/>  })
                 }
             </div>
         )

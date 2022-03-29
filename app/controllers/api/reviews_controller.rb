@@ -22,7 +22,7 @@ class Api::ReviewsController < ApplicationController
     def create
         @review = Review.new(review_params)
         if @review.save!
-            render show
+            render "api/reviews/show"
         else
             render json: @review.errors.full_messages, status: 401
         end
@@ -31,14 +31,16 @@ class Api::ReviewsController < ApplicationController
     def update 
         @review = Review.find(params[:id])
         if @review.update(review_params)
-            render show
+            render :show
+            #render "api/reviews/show"
         end
     end
 
     def destroy 
         @review = Review.find(params[:id])
         @review.destroy!
-        render :show
+        render "api/reviews/show"
+        #render :show
     end
 
     def new 

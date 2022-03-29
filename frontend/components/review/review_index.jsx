@@ -1,6 +1,7 @@
 import React from "react";
 import ReviewIndexItem from "./review_index_item";
 
+
 class ReviewIndex extends React.Component {
     constructor(props) {
         super(props)
@@ -30,7 +31,8 @@ class ReviewIndex extends React.Component {
                             deleteReview={this.props.deleteReview}
                             currentUserId={this.props.currentUserId}
                             fetchAllUsers={this.props.fetchAllUsers}
-                            openModal={this.props.openModal}/>
+                            openModal={this.props.openModal}
+                            history={this.props.history}/>
                         
                     }
                 })

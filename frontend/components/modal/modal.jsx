@@ -20,10 +20,14 @@ const Modal = ({modal, closeModal, ownProps}) => {
         component = <SignupFormContainer />;
         break;
       case 'edit':
-        component = <EditReviewFormContainer ownProps={ownProps} />;
+        component = <EditReviewFormContainer 
+        ownProps={ownProps} 
+        />;
         break
       case 'write':
-        component = <ReviewFormContainer ownProps={ownProps} />
+        component = <ReviewFormContainer 
+        ownProps={ownProps} 
+        />
         break
       default:
         return null;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { AiFillStar } from 'react-icons/ai'
 
 class RestaurantIndexItem extends React.Component {
     constructor(props) {
@@ -8,6 +9,21 @@ class RestaurantIndexItem extends React.Component {
 
 
     render() {
+        var sum = 0; 
+        var count = 0;
+        this.props.reviews.map(review => {
+            if(review.restaurant_id === this.props.restaurant.id) {
+                // console.log(review.rating)
+                sum += review.rating
+                count++
+            }
+        })
+        var average = Math.floor(sum / count)
+        var mapStar = [];
+        for(let i = 0; i < average; i++) {
+            mapStar.push('undefined')
+        }
+        console.log(mapStar)
         return (
          
 
@@ -16,7 +32,9 @@ class RestaurantIndexItem extends React.Component {
 
                 <img className="image-index" src={this.props.restaurant.photos_url[0]}/>
                 <h1 className="restaurant-index-header">{this.props.restaurant.name}</h1> 
-                <h3>{this.props.restaurant.cuisine}</h3> 
+                <p className="star-index-rating">   {mapStar.map(star => {
+                    return <AiFillStar color="red" />})}</p>
+                <h3 className="cuisine-index">{this.props.restaurant.cuisine}</h3> 
             </div>
             </Link>
         )

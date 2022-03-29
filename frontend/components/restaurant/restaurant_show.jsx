@@ -3,6 +3,7 @@ import ReviewIndexContainer from "../review/review_index_container";
 import { Link } from "react-router-dom";
 import CreateReview from "../review/review_form"
 import { HashLink } from 'react-router-hash-link';
+import { AiFillStar } from 'react-icons/ai'
 
 
 
@@ -12,7 +13,7 @@ class RestaurantShow extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
+
         this.props.fetchRest(this.props.match.params.restaurantId)
     };
 
@@ -24,36 +25,81 @@ class RestaurantShow extends React.Component {
 
 
     render() {
+        if(!this.props.restaurant) return null;
+
+        if(!this.props.restaurant.photos_url[1]) return null;
+      
+
+        var sum = 0; 
+        var count = 0;
+        this.props.reviews.map(review => {
+            if(review.restaurant_id === this.props.restaurant.id) {
+                sum += review.rating
+                count++
+            }
+        })
+        var average = Math.floor(sum / count)
+        var mapStar = [];
+        for(let i = 0; i < average; i++) {
+            mapStar.push('undefined')
+        }
+
+        var write;
+        var signInPlease;
+        if(this.props.currentUserId !== null) {
+            write =   <Link className="review-button-container" to={`/restaurants/${this.props.restaurant.id}/review`} > 
+                        <button className="review-button" 
+                        >Write a review</button>
+                        </Link>
+        } else {
+            signInPlease =   <Link className="review-button-container"> 
+            <button className="review-button" 
+            >Sign in to leave a review</button>
+            </Link>
+        }
+     
         return (
             <div>
 
-                    <img  className="image-restaurant-show" src={this.props.restaurant.photos_url[0]}/>
+                    <img  className="image-restaurant-show" src={this.props.restaurant.photos_url[1]}/>
             
             <div className="restaurant-show-container">
 
                     <div className="rest-navigation">
                     <HashLink to={`#description`} className="content-button">Overview</HashLink>
+                        <HashLink to={`#menu`} className="content-button">Menu</HashLink>
                         <HashLink to={`#reviews`} className="content-button">Reviews</HashLink>
                     </div>    
+                
 
-                    <h1 className="restaurant-name" >{this.props.restaurant.name}</h1>
+                    <h1 className="restaurant-name" >{this.props.restaurant.name}  
+
+            
+                    {mapStar.map(star => {
+                        return <AiFillStar color="red" className="star-show-page" />})}
+                 
+                    
+                    </h1>
+                 
+
+
                     
                     <h2 className="restaurant-description-title" id='description'>Description</h2>
                     <p>{this.props.restaurant.description}</p>
 
-          
+                    <h2 id="menu" className="restaurant-menu-title">Menu</h2>
+                    <img  src={this.props.restaurant.photos_url[2]}/> 
 
                     <h1 className="restaurant-review-title" id='reviews'>Reviews
-
+                            {write}
+                            {signInPlease}
                         {/* <button onClick={() => restaurantId=this.props.restaurant.id} className="review-button">Write a Review</button> */}
 
-                        <Link className="review-button-container">
-                        <button className="review-button" onClick={() => this.props.openModal('write')}>Write a review</button>
-                        </Link>
+                      
                         
                     </h1>
 
-                 
+
                         <div className="single-review-container">
 
                        < ReviewIndexContainer restaurant={this.props.restaurant} />

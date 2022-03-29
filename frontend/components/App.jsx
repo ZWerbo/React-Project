@@ -26,14 +26,15 @@ const App = () => (
         <GreetingContainer />
     {/* <div className="index-page-search-box"></div> */}
     <Route exact path='/' component={SearchBar} />
-    <Route exact path='/restaurants/:restaurantId/review' component={SearchBar} />
+    
     <Route exact path='/' component={RestaurantIndexContainer} />
     <Route exact path="/restaurants/:restaurantId" component={Modal}/>
     <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer}/>
-   
-    {/* <Route exact path="/restaurants/:restaurantId/review" component={ReviewFormContainer}/> */}
+    <Route exact path="/restaurants/:restaurantId/review" component={ReviewFormContainer}/>
+    <Route exact path="/restaurants/:restaurantId/review/:reviewId" component={EditReviewFormContainer}/>
     
     {/* <Route exact path="/restaurants/:restaurantId" component={ReviewIndexContainer}/> */}
+    <footer className="footer-container"></footer>
   </div>
 );
 

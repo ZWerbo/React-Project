@@ -68,41 +68,54 @@ class SignupForm extends React.Component {
 
     render(){
         return (
-            <div className="login-form-container">
+            <div className="signup-form-container">
+            <div onClick={this.props.closeModal} className="close-x" >X</div>
             <form onSubmit={this.handleSubmit} className="signup-form-box">
               <br/>
-              Please {this.props.formType} or {this.props.navLink}
               { this.renderErrors() }
-              <div className="login-form">
+
+
+              <div className="signup-form">
                 <br/>
-                <label>Username:
+          
+                  <br />
                   <input type="text"
                     value={this.state.username}
                     onChange={this.update('username')}
+            
                     className="signup-input"
+                    placeholder="Username"
                   />
-                </label>
+        
                 <br/>
-                <label>Email:
+       
+                  <br />
                   <input type="text"
                     value={this.state.email}
                     onChange={this.update('email')}
+              
                     className="signup-input"
+                    placeholder="Email"
                   />
-                </label>
+             
                 <br/>
-                <label>Password:
+            
+                  <br />
                   <input type="password"
                     value={this.state.password}
                     onChange={this.update('password')}
                     className="signup-input"
+                    placeholder="Password"
                   />
-                </label>
+         
                 <br/>
-                <input className="session-submit" type="submit" value="Sign up" />
-
-              <Link to='/login' onClick={this.props.clearSessionErrors}>Have an account? Login</Link>
               </div>
+              <div className="signup-submit-container">
+                <input className="signup-submit" type="submit" value="Sign up" />
+
+              </div>
+
+
             </form>
           </div>
         )
