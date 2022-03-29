@@ -15,45 +15,4 @@
  */
 
 
- /* @import "./greetings_button.scss"; */
- @import "./modal.scss";
- @import "./login.scss";
- @import "./search_bar.scss";
- @import "./edit_review.scss";
- @import "./create_review.scss";
- @import "./single_review_box.scss";
 
- .header-group {
-   text-align: right;
- }
- .logout-button-greeting {
-   text-align: center;
- }
- .login-signup {
-    
-     text-align: right;
-     border: black 3px;
-     z-index: 1;
- }
-
- .login-form-container {
-     text-align: center;
- }
-
- .top-header {
-     background-color: white;
-     opacity: calc(2);
-     height: 40px;
- }
-
-
- .top-of-the-page {
-     background-color: grey;
-     height: 20px;
-     opacity: .2;
- }
-
-
-
-  
- @import "restaurant_index.scss"
