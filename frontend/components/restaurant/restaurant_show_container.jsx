@@ -5,8 +5,6 @@ import { openModal } from "../../actions/modal"
 
 
 const mSTP = (state, ownProps) => {
-    // console.log(ownProps)
-    // console.log(state.entities.reviews)
     return {
         restaurant: state.entities.restaurants[ownProps.match.params.restaurantId],
         currentUserId: state.session.id,

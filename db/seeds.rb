@@ -16,6 +16,9 @@ Restaurant.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('restaurants')
 Review.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
+Reservation.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('reservations')
+
 
 
 
@@ -57,6 +60,28 @@ rest4 = Restaurant.create!(
     cuisine: 'Burger',
     city: 'Portland'
     )
+
+rest5 = Restaurant.create!(
+    name: 'Cibo', 
+    description: 'We are a neighborhood Italian restaurant with wood-fired pizza, housemade pastas, delicious cocktails and dessert. Located on the corner of Division and 35th Place, we are in the heart of SE Portland.
+    Thank you for all of the continued support you have shown us during all the ups and downs of 2020. We look forward to serving you in whatever new capacities we are able to safely do so.', 
+    hours: '4pm to 9pm',
+    cuisine: 'Italian',
+    city: 'Portland'
+    )
+
+rest6 = Restaurant.create!(
+    name: '3 Doors Down Café',
+    description: 'Inclusive from the moment you grace the doorway, 
+    3 Doors Down Café and Lounge has a keen acumen for speeding up your wind down, 
+    flipping the switch from maddening day to welcoming  respite.  A playful, thoughtful, 
+    and engaging dining experience begins with our dynamic wine list or a creative cocktail, 
+    then flows effortlessly to the inventive starters, house made pastas or perfectly grilled fish and meats.  
+    3 Doors Down Café offers a doff of the hat to Mother Italy and a harmonious affair  with locally procured Pacific Northwest cuisine. ',
+    hours: '5pm to 9pm',
+    cuisine: 'Italian',
+    city: 'Portland'
+)
         
         file1 = URI.open('https://opentable-zach-seeds.s3.amazonaws.com/pastagum.jpg')
         rest1.photos.attach(io: file1, filename: 'pastagum.jpg')
@@ -84,13 +109,30 @@ rest4 = Restaurant.create!(
         file10 = URI.open('https://opentable-zach-seeds.s3.amazonaws.com/mexicanmenu.jpg')
         rest2.photos.attach(io: file10, filename: 'mexicanmenu.jpg')
         
-        file11 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/sushimenu2.jpg")
-        rest3.photos.attach(io: file11, filename: 'sushimenu2.jpg')
+        file11 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/sushimenu.jpg")
+        rest3.photos.attach(io: file11, filename: 'sushimenu.jpg')
 
         file12 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/burgersmenu.jpg")
         rest4.photos.attach(io: file12, filename: 'burgersmenu.jpg')
 
-        
+        file13 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/cibopizzasmall.jpg")
+        rest5.photos.attach(io: file13, filename: "cibopizzasmall.jpg")
+
+        file14 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/CiboPizzaBig.jpg")
+        rest5.photos.attach(io: file14, filename: "CiboPizzaBig.jpg")
+
+        file15 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/cibomenu.jpg")
+        rest5.photos.attach(io: file15, filename: "cibomenu.jpg")
+
+        file16 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/3doors.jpeg")
+        rest6.photos.attach(io: file16, filename: "3doors.jpeg")
+
+        file17 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/3doorsbig.jpg")
+        rest6.photos.attach(io: file17, filename: "3doorsbig.jpg")
+
+        file18 = URI.open("https://opentable-zach-seeds.s3.amazonaws.com/3doorsmenu.jpg")
+        rest6.photos.attach(io: file18, filename: "3doorsmenu.jpg")
+
         
 rev1 = Review.create!(
     body: 'food was excellent! filled my gullet with delicious sushi',

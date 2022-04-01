@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CreateReview from "../review/review_form"
 import { HashLink } from 'react-router-hash-link';
 import { AiFillStar } from 'react-icons/ai'
+import RestaurantPageReservationContainer from "../reservations/restaurant_page_reservation_container";
 
 
 
@@ -62,7 +63,6 @@ class RestaurantShow extends React.Component {
             <div>
 
                     <img  className="image-restaurant-show" src={this.props.restaurant.photos_url[1]}/>
-            
             <div className="restaurant-show-container">
 
                     <div className="rest-navigation">
@@ -74,18 +74,23 @@ class RestaurantShow extends React.Component {
 
                     <h1 className="restaurant-name" >{this.props.restaurant.name}  
 
-            
+                     {/* &nbsp;&nbsp;&nbsp;&nbsp;
                     {mapStar.map(star => {
-                        return <AiFillStar color="red" className="star-show-page" />})}
+                        return <AiFillStar color="red" className="star-show-page" />})} */}
                  
                     
                     </h1>
-                 
 
+                    <div className="star-other-container">
+                        <div>
+                    {mapStar.map(star => {
+                        return <AiFillStar color="red" className="star-show-page" />})}
 
-                    
-                    <h2 className="restaurant-description-title" id='description'>Description</h2>
-                    <p>{this.props.restaurant.description}</p>
+                        </div>
+                    <p className="restaurant-show-description-items">      &nbsp;&nbsp; {count} Reviews    &nbsp;&nbsp;  {this.props.restaurant.cuisine}    &nbsp;&nbsp; {this.props.restaurant.hours} &nbsp;&nbsp; Tuesday-Sunday</p>
+                    </div>
+                    {/* <h2 className="restaurant-description-title" id='description'>Description</h2> */}
+                    <p id='description' className="restaurant-description">{this.props.restaurant.description}</p>
 
                     <h2 id="menu" className="restaurant-menu-title">Menu</h2>
                     <img  src={this.props.restaurant.photos_url[2]}/> 
@@ -109,6 +114,9 @@ class RestaurantShow extends React.Component {
             
 
             </div>
+<div className="reservation-showpage-container">
+    < RestaurantPageReservationContainer restaurant={this.props.restaurant}  />
+</div>
         </div>
         )
     }

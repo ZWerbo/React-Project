@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ProfileBar from "./profile_bar";
 
 
-
-const Greeting = ({ currentUser, logout, openModal }) => {
+const Greeting = ({ currentUser, currentUsername, logout, openModal }) => {
   const sessionLinks = () => (
     
     <nav className="login-signup">
@@ -14,7 +14,8 @@ const Greeting = ({ currentUser, logout, openModal }) => {
   );
   const personalGreeting = () => (
     <hgroup className="header-group">
-      <button className="logout-button-greeting" onClick={logout}>Log Out</button>
+      <ProfileBar currentUsername={currentUsername} logout={logout} currentUser={currentUser}/>
+      {/* <button className="logout-button-greeting" onClick={logout}>Log Out</button> */}
     </hgroup>
  
   );

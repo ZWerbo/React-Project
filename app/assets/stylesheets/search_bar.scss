@@ -1,10 +1,8 @@
 .index-page-search-box {
-    // background: rgb(2,0,36);
-    // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,39,219,1) 53%, rgba(0,212,255,1) 100%);
-    // object-fit: contain;
+
     height: 425px;
     width: 100%;
-
+    z-index: 1;
     // object-fit: cover;
     background-image: url(assets/panoramarestsmall.jpeg) {
         object-fit: cover;
@@ -21,6 +19,7 @@
     color: white;
     text-align: center;
     padding-top: 60px;
+    font-size: 38px;
   }
 
   .find-table-box {

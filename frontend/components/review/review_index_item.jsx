@@ -27,12 +27,13 @@ class ReviewIndexItem extends React.Component {
            editButton =   <div className="delete-button-container"> <Link to={`/restaurants/${this.props.review.restaurant_id}/review/${this.props.review.id}`}>  <button className="edit-button">Edit</button>   </Link> </div> 
         }
 
-        // console.log([...Array(this.props.review.rating)])
+    
 
          return (
 
             <div className="single-review-container">
-                <CgProfile className="cgProfileReview" />
+                    <div className="cgProfileReview-container"><CgProfile className="cgProfileReview" /></div>
+            
                 <div className="first-review-box">
         {
             this.props.users.map(user => {

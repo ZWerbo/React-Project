@@ -89,9 +89,11 @@
 
 .header-group {
   text-align: right;
+  z-index: 2;
 }
 .logout-button-greeting {
   text-align: center;
+  z-index: 1;
 }
 .login-signup {
    

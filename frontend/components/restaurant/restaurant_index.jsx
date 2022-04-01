@@ -18,6 +18,8 @@ class RestaurantIndex extends React.Component {
 
     render() {
         return (
+            <div>
+
             <div className="restaurant_index_outside">
                 {
                     this.props.restaurants.map((restaurant) => { return <RestaurantIndexItem restaurant={restaurant} reviews={this.props.reviews}
@@ -25,6 +27,8 @@ class RestaurantIndex extends React.Component {
                     key={restaurant.id}/>  })
                 }
             </div>
+            <footer className="restaurant-index-footer"></footer>
+                </div>
         )
     }
 }

@@ -1,0 +1,110 @@
+.big-one {
+    display: flex;
+    background-color: rgb(241, 238, 238);
+    height: 700px;
+    width: 100%;
+}
+
+.almost-done {
+    font-family: 'Overpass', sans-serif;
+}
+
+.In-the-way{
+    width: 200px;
+}
+
+.in-the-way-two {
+    width: 100px
+}
+.confirmation-flex {
+    display: flex;
+}
+
+.date-confirmation-page {
+    padding-right: 20px;
+}
+
+.confirmation-container{
+    background-color: white;
+    padding: 20px;
+    margin-top: 5%;
+    height: 500px;
+    border-radius: 5px;
+    width: 600px;
+}
+.confirmation-flex-interior {
+    padding: 20px;
+    font-family: 'Overpass', sans-serif;
+}
+
+.phonenumber-confirm{
+    width: 290px;
+    height: 50px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: .05rem solid #d8d9db;
+    &:hover, &:focus {
+        border: .05rem solid darkgray;
+        outline: .05rem solid darkgray;
+        transition: 200ms;
+    }
+}
+
+.special-request {
+    border-radius: 5px;
+    padding-left: 5px;
+    border: .05rem solid #d8d9db;
+    &:hover, &:focus {
+        border: .05rem solid darkgray;
+        outline: .05rem solid darkgray;
+        transition: 200ms;
+    }
+}
+
+.confirm-reservation-button {
+    background-color: red;
+    border-radius: 3px;
+    height: 40px;
+    width: 601px;
+    color: white;
+    transition: all .3s;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Overpass', sans-serif;
+    
+}
+
+.by-clicking {
+    display: flex;
+    width: 400px;
+    font-size: 10px;
+    color: rgb(224, 224, 224);
+}
+
+.dining-info {
+    // width: 400px;
+    // font-family: 'Overpass', sans-serif;
+
+    width: 350px;
+    font-family: 'Overpass', sans-serif;
+    margin-top: 104px;
+    background-color: white;
+    padding: 20px;
+    height: 425px;
+    border-radius: 5px
+}
+
+.p-under-tag {
+    font-style: italic;
+    // color: lightgrey;
+    font-weight: 100;
+    font-family: 'Commissioner', sans-serif
+}
+
+.confirm-footer {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(29, 34, 76);
+}
