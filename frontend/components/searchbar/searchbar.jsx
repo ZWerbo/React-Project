@@ -2,13 +2,22 @@ import React from "react";
 
 
 class SearchBar extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            search: "",
+            suggestion: false
+        }
+    }
+
+    
 
 
     render() {
         return (
             <div>
 
-                {/* <img  className="image-search-box" src="https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F3ca4ee98-4142-4a9d-b684-eb96d883de40.jpg?fit=scale-down&source=next&width=700" alt="" /> */}
+              
             <div className="index-page-search-box" >
                 <div className="find-table-box">
                <h1 className="Find-your-table-search">

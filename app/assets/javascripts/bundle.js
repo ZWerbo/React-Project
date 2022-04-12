@@ -247,6 +247,38 @@ var deleteReview = function deleteReview(reviewId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/searchbar_aciton.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/searchbar_aciton.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UPDATE_FILT": () => (/* binding */ UPDATE_FILT),
+/* harmony export */   "updateFilt": () => (/* binding */ updateFilt),
+/* harmony export */   "updateFilter": () => (/* binding */ updateFilter)
+/* harmony export */ });
+/* harmony import */ var _restaurant_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./restaurant_action */ "./frontend/actions/restaurant_action.js");
+
+var UPDATE_FILT = 'UPDATE_FILT';
+var updateFilt = function updateFilt(filter, value) {
+  return {
+    type: UPDATE_FILT,
+    filter: filter,
+    value: value
+  };
+};
+var updateFilter = function updateFilter(filter, value) {
+  return function (dispatch, getState) {
+    dispatch(updateFilt(filter, value));
+    return (0,_restaurant_action__WEBPACK_IMPORTED_MODULE_0__.fetchAllRests)(getState().ui.filters)(dispatch);
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -851,7 +883,7 @@ var ConfirmationReservation = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      this.props.updateReservation(this.state); // .then(this.props.history.push('/'))
+      this.props.updateReservation(this.state).then(this.props.history.push("/".concat(this.props.currentUserId, "/profile")));
     }
   }, {
     key: "update",
@@ -2357,10 +2389,17 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(SearchBar);
 
-  function SearchBar() {
+  function SearchBar(props) {
+    var _this;
+
     _classCallCheck(this, SearchBar);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      search: "",
+      suggestion: false
+    };
+    return _this;
   }
 
   _createClass(SearchBar, [{
@@ -3083,21 +3122,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _restaurant_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restaurant_reducer */ "./frontend/reducers/restaurant_reducer.js");
 /* harmony import */ var _review_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_reducer */ "./frontend/reducers/review_reducer.js");
 /* harmony import */ var _reservation_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reservation_reducer */ "./frontend/reducers/reservation_reducer.js");
+/* harmony import */ var _searchbar_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./searchbar_reducer */ "./frontend/reducers/searchbar_reducer.js");
 
 
 
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   restaurants: _restaurant_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   reviews: _review_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  reservations: _reservation_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  reservations: _reservation_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  search: _searchbar_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -3122,6 +3164,45 @@ var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/filtersReducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/filtersReducer.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_searchbar_aciton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/searchbar_aciton */ "./frontend/actions/searchbar_aciton.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var DEFAULT = {
+  general: null,
+  search: null
+};
+
+var filtersReducer = function filtersReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_searchbar_aciton__WEBPACK_IMPORTED_MODULE_0__.UPDATE_FILT:
+      var newState = Object.assign({}, _defineProperty({}, action.filter, action.value));
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (filtersReducer);
 
 /***/ }),
 
@@ -3324,6 +3405,43 @@ var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
 
 /***/ }),
 
+/***/ "./frontend/reducers/searchbar_reducer.js":
+/*!************************************************!*\
+  !*** ./frontend/reducers/searchbar_reducer.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/restaurant_action */ "./frontend/actions/restaurant_action.js");
+
+
+var searchbarReducer = function searchbarReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var newState = state.slice();
+
+  switch (action.type) {
+    case _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_RESTAURANTS:
+      var rests = Object.values(action.rests);
+      rests.forEach(function (rest) {
+        return nextState.push(rest.name, rest.cuisine, rest.id);
+      });
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchbarReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/session_errors_reducer.js":
 /*!*****************************************************!*\
   !*** ./frontend/reducers/session_errors_reducer.js ***!
@@ -3414,12 +3532,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _modalReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modalReducer */ "./frontend/reducers/modalReducer.js");
+/* harmony import */ var _filtersReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filtersReducer */ "./frontend/reducers/filtersReducer.js");
 
 
-var uiReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  modal: _modalReducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+var uiReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  modal: _modalReducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  filters: _filtersReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (uiReducer);
 
