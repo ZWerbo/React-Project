@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+const SearchBar =({searchResult, searchInput, setSearchInput}) => {
+    // console.log(setUpdated)
+    // const [searchInput, setSearchInput] = useState('')
 
-class SearchBar extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            search: "",
-            suggestion: false
-        }
+    const update = (e) => {
+        
+        setSearchInput(e.target.value) 
+        // setUpdated(Math.random() * 1000)
     }
 
-    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        for(let i = 0; i < searchResult.length; i++) {
+            if(searchResult[i].name.includes(searchInput) || searchResult[i].cuisine.includes(searchInput)) {
+                
+            }
+        }
 
+    }
 
-    render() {
         return (
             <div>
 
@@ -59,17 +65,17 @@ class SearchBar extends React.Component {
                         <option value="9">9 people</option>
                         <option value="10">10 people</option>
                     </select>
-                    <input type="text" className="search-input-searchbar" placeholder="Restaurant, or Cuisine" />
-                    <button className="search-bar-button">Lets go</button>
+                    {/* <input type="text" className="search-input-searchbar" /> */}
+                    <input type="text" className="search-input-searchbar" placeholder="Restaurant, or Cuisine" value={searchInput} onChange={update} />
+                    <button onSubmit={handleSubmit} className="search-bar-button">Lets go</button>
                    </form>
                </div>
-                {/* <img  className="index-page-search-box" src="https://images.adsttc.com/media/images/54f7/bf94/e58e/cee8/4d00/0234/large_jpg/4.jpg?1425522572" alt="" /> */}
+             
             </div>
 
 
             </div>
         )
-    }
 }
 
 export default SearchBar

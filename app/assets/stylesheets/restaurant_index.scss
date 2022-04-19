@@ -18,6 +18,8 @@
     position: relative;
     cursor: cursor;
     font-family: 'Overpass', sans-serif;
+    animation-duration: 1s;
+    animation-name: fade-in;
 
 }
 
@@ -32,6 +34,14 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     // margin-top: 5%;
+}
+
+@keyframes fade-in {
+    0%   {opacity: 0%;}
+    50%  {opacity: 0%;}
+    60%  {opacity: 35%;}
+    75%  {opacity: 65%;}
+    100% {opacity: 100%;}
 }
 
 .image-index {

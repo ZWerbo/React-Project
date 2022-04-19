@@ -1,4 +1,4 @@
-import { UPDATE_FILT } from "../actions/searchbar_aciton";
+import { UPDATE_FILT } from "../actions/searchbar_action";
 
 const DEFAULT = {
     general: null,

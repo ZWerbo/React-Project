@@ -33,6 +33,7 @@ class CreateReview extends React.Component {
                     <select 
                     value={this.state.rating}
                      onChange={this.update("rating")} placeholder="0" required>
+                            <option default='true'>Choose</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

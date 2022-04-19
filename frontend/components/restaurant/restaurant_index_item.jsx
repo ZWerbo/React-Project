@@ -9,6 +9,7 @@ class RestaurantIndexItem extends React.Component {
 
 
     render() {
+        debugger
         var sum = 0; 
         var count = 0;
         this.props.reviews.map(review => {
