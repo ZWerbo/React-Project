@@ -8,7 +8,8 @@ const mSTP = (state, ownProps) => {
     return {
         currentUserId: state.session.id,
         reservations: Object.values(state.entities.reservations),
-        currentUser: state.session
+        currentUser: state.session.username,
+        reviews: state.entities.users[state.session.id].reviews
     }
 }
 

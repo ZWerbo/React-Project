@@ -10,9 +10,9 @@ import EditReviewFormContainer from "./review/edit_review_form_container";
 import ConfirmationReservationContainer from "./reservations/confirmation_reservation_container";
 import UserProfileContainer from "./user_profile/user_profile_container";
 import SearchbarContainer from "./searchbar/searchbar_container";
-import MainPage from "./main/main_page";
+import MainPage from './main/main_page.jsx'
 const App = () => {
-  
+  //exact path broke the switch on the profile to make the routes go either way. 
   return (
   <div>
         <div className="top-of-the-page"></div>
@@ -36,9 +36,11 @@ const App = () => {
     <Route exact path="/restaurants/:restaurantId/review" component={ReviewFormContainer}/>
     <Route exact path="/restaurants/:restaurantId/review/:reviewId" component={EditReviewFormContainer}/>
     <ProtectedRoute exact path="/reservations/:reservationId" component={ConfirmationReservationContainer} />
-    <ProtectedRoute exact path="/:userId/profile" component={UserProfileContainer} />
+    <ProtectedRoute path="/:userId/profile" component={UserProfileContainer} />
     {/* <Route exact path="/restaurants/:restaurantId" component={ReviewIndexContainer}/> */}
     {/* <div className="footer-container"></div> */}
+
+  
   </div>
   )
 };

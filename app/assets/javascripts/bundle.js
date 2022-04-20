@@ -411,7 +411,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reservations_confirmation_reservation_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./reservations/confirmation_reservation_container */ "./frontend/components/reservations/confirmation_reservation_container.jsx");
 /* harmony import */ var _user_profile_user_profile_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user_profile/user_profile_container */ "./frontend/components/user_profile/user_profile_container.jsx");
 /* harmony import */ var _searchbar_searchbar_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./searchbar/searchbar_container */ "./frontend/components/searchbar/searchbar_container.jsx");
-/* harmony import */ var _main_main_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/main_page */ "./frontend/components/main/main_page.jsx");
+/* harmony import */ var _main_main_page_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/main_page.jsx */ "./frontend/components/main/main_page.jsx");
 
 
 
@@ -427,6 +427,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
+  //exact path broke the switch on the profile to make the routes go either way. 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "top-of-the-page"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -441,7 +442,7 @@ var App = function App() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal_modal_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     exact: true,
     path: "/",
-    component: _main_main_page__WEBPACK_IMPORTED_MODULE_11__["default"]
+    component: _main_main_page_jsx__WEBPACK_IMPORTED_MODULE_11__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     exact: true,
     path: "/search",
@@ -467,7 +468,6 @@ var App = function App() {
     path: "/reservations/:reservationId",
     component: _reservations_confirmation_reservation_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_utils_route_util__WEBPACK_IMPORTED_MODULE_2__.ProtectedRoute, {
-    exact: true,
     path: "/:userId/profile",
     component: _user_profile_user_profile_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }));
@@ -1483,7 +1483,6 @@ var RestaurantIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      debugger;
       var sum = 0;
       var count = 0;
       this.props.reviews.map(function (review) {
@@ -3088,6 +3087,168 @@ var ReservationProfileItem = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/user_profile/reservations.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/user_profile/reservations.jsx ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var ReservationProfile = /*#__PURE__*/function (_React$Component) {
+  _inherits(ReservationProfile, _React$Component);
+
+  var _super = _createSuper(ReservationProfile);
+
+  function ReservationProfile(props) {
+    _classCallCheck(this, ReservationProfile);
+
+    debugger;
+    return _super.call(this, props);
+  }
+
+  _createClass(ReservationProfile, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "djalksdjflkasjdf;lajsd;lfkjasl;dkfjasdf"));
+    }
+  }]);
+
+  return ReservationProfile;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+var mSTP = function mSTP(state) {
+  console.log(state.entities.users[state.session.id]);
+  return {
+    currentUser: state.entities.users[state.session.id]
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {};
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(ReservationProfile));
+
+/***/ }),
+
+/***/ "./frontend/components/user_profile/user_edit_form.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/user_profile/user_edit_form.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var UserEditForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(UserEditForm, _React$Component);
+
+  var _super = _createSuper(UserEditForm);
+
+  function UserEditForm(props) {
+    _classCallCheck(this, UserEditForm);
+
+    return _super.call(this, props);
+  }
+
+  _createClass(UserEditForm, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "account-details-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "account-details-form",
+        action: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "About Me"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "first-last-row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, " Firstname", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "edit-name-input",
+        type: "text"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, " Lastname", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "edit-name-input"
+      })))));
+    }
+  }]);
+
+  return UserEditForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+var mSTP = function mSTP(state) {
+  console.log(state.entities.users[state.session.id]);
+  return {
+    currentUser: state.entities.users[state.session.id]
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {};
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(UserEditForm));
+
+/***/ }),
+
 /***/ "./frontend/components/user_profile/user_profile.jsx":
 /*!***********************************************************!*\
   !*** ./frontend/components/user_profile/user_profile.jsx ***!
@@ -3101,6 +3262,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _reservation_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reservation_item */ "./frontend/components/user_profile/reservation_item.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
+/* harmony import */ var _user_edit_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_edit_form */ "./frontend/components/user_profile/user_edit_form.jsx");
+/* harmony import */ var _reservations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reservations */ "./frontend/components/user_profile/reservations.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3127,6 +3292,11 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
+
+
+
 var UserProfile = /*#__PURE__*/function (_React$Component) {
   _inherits(UserProfile, _React$Component);
 
@@ -3141,14 +3311,11 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
   _createClass(UserProfile, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchAllReservations();
-      this.props.fetchAllReviews();
+      this.props.fetchAllReservations(); // this.props.fetchAllReviews()
     }
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
       // console.log(this.props.currentUserId)
       var UserRez;
 
@@ -3159,14 +3326,41 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
         }
       }
 
-      console.log(UserRez);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.props.reservations.map(function (reservation) {
-        if (_this.props.currentUserId === reservation.user_id) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_reservation_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            reservation: reservation
-          });
-        }
-      }));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "profile-page-main"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "profile-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, this.props.currentUser)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "flex-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "far-left-box"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "left"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        className: "profile-link",
+        to: "/".concat(this.props.currentUserId, "/profile/reservations")
+      }, "Reservations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        className: "profile-link",
+        to: "/".concat(this.props.currentUserId, "/profile")
+      }, "Account Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        className: "profile-link",
+        to: "/users/".concat(this.props.currentUserId, "/fav")
+      }, "Saved Restaurants"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        className: "profile-link",
+        to: "/users/".concat(this.props.currentUserId, "/reviews")
+      }, "Reviews"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "form-section"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "user-row"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_5__.Route, {
+        exact: true,
+        path: "/:userId/profile/reservations",
+        component: _reservations__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_5__.Route, {
+        exact: true,
+        path: "/:userId/profile",
+        component: _user_edit_form__WEBPACK_IMPORTED_MODULE_2__["default"]
+      }))));
     }
   }]);
 
@@ -3202,7 +3396,8 @@ var mSTP = function mSTP(state, ownProps) {
   return {
     currentUserId: state.session.id,
     reservations: Object.values(state.entities.reservations),
-    currentUser: state.session
+    currentUser: state.session.username,
+    reviews: state.entities.users[state.session.id].reviews
   };
 };
 

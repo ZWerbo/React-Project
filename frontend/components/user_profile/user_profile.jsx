@@ -1,6 +1,11 @@
 import React from "react";
 // import { fetchAllReservations } from "../../actions/reservation_action";
 import ReservationProfileItem from "./reservation_item";
+import { Link } from "react-router-dom";
+import { Route } from "react-router-dom/cjs/react-router-dom.min";
+import  UserEditForm from "./user_edit_form";
+import { Switch } from "react-router-dom";
+import Reservations from "./reservations";
 
 
 class UserProfile extends React.Component {
@@ -11,7 +16,7 @@ class UserProfile extends React.Component {
 
     componentDidMount() {
         this.props.fetchAllReservations()
-        this.props.fetchAllReviews()
+        // this.props.fetchAllReviews()
     }
 
 
@@ -25,16 +30,50 @@ class UserProfile extends React.Component {
             }
         }
 
-        console.log(UserRez)
         return (
-            <div>
+            <div className="profile-page-main">
+                <div className="profile-header" >
+                    <h1>{this.props.currentUser}</h1>
+                </div>
+
+
+                <div className="flex-container">
+                <div className="far-left-box"></div>
+
+                <div className="left">
+                    <ul>
+                        <Link className="profile-link" to={`/${this.props.currentUserId}/profile/reservations`}>Reservations</Link>
+                        <Link className="profile-link" to={`/${this.props.currentUserId}/profile`}>Account Details</Link>
+                        <Link className="profile-link" to={`/users/${this.props.currentUserId}/fav`}>Saved Restaurants</Link>
+                        <Link className="profile-link" to={`/users/${this.props.currentUserId}/reviews`}>Reviews</Link>
+                    </ul>
+                </div>
+
+                <div className="form-section">
+                    <div className="user-row"></div>
+                    {/* <Switch> */}
+                    <Route exact path={`/:userId/profile/reservations`}  component={Reservations}/>
+                    <Route exact path={`/:userId/profile`} component={UserEditForm} />
+
+                    {/* </Switch> */}
+                    {/* <Route exact path={`/users/:userId/bookings`} component={UserBookingIndexContainer} />
+                    <Route exact path={`/users/:userId/fav`} component={UserFavIndexContainer} /> */}
+                </div>
+
+
+                </div>
+
+
+
+
+                {/* {this.props.reviews[0].body}
                {
 this.props.reservations.map(reservation => {
     if(this.props.currentUserId === reservation.user_id) {
-        return < ReservationProfileItem reservation={reservation} />
+        return < ReservationProfileItem reservation={reservation} key={reservation.id}/>
     }
 })
-               }
+               } */}
             </div>
         )
     }

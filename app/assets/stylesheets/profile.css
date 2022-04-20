@@ -1,0 +1,77 @@
+.profile-header {
+    margin: auto;
+    padding: 16px;
+    border-bottom: 2px solid lightgray;
+    border-top: 2px solid lightgray;
+    padding-left: 287px;
+}
+
+.form-section {
+    background-color: #f6f6f6;
+    width: 1000px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.right-side{
+    background-color: #f6f6f6;
+}
+.far-left-box{
+    height: 2000px;
+    width: 200px;
+    display: flex;
+}
+.left {
+    display: flex;
+    background-color: #f6f6f6;
+    width: 250px;
+    /* font-family: "Roboto", sans-serif; */
+    font-weight: 300;
+    font-size: 13px;
+    padding-left:  35px;
+    padding-top: 37px;
+    box-sizing: border-box;
+    height: max-content;
+    text-decoration: none;
+    height: 2000px;
+}
+
+.left ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-link {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+    color: black;
+}
+
+.account-details-container {
+    background: #fff;
+    border-bottom: 0.0625rem solid #d8d9db;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    width: 100%;
+    height: 700px;
+}
+
+.first-last-row {
+    display: flex;
+    width: 776px;
+    justify-content: space-between;
+    margin-top: 23px;
+}
+
+.edit-name-input {
+    width: 383px;
+    margin-top: 15px;
+    padding: 5px;
+}
+
