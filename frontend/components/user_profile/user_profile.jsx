@@ -6,6 +6,7 @@ import { Route } from "react-router-dom/cjs/react-router-dom.min";
 import  UserEditForm from "./user_edit_form";
 import { Switch } from "react-router-dom";
 import Reservations from "./reservations";
+import UserReviews from "./user_reviews";
 
 
 class UserProfile extends React.Component {
@@ -15,7 +16,7 @@ class UserProfile extends React.Component {
 
 
     componentDidMount() {
-        this.props.fetchAllReservations()
+        // this.props.fetchAllReservations()
         // this.props.fetchAllReviews()
     }
 
@@ -44,25 +45,24 @@ class UserProfile extends React.Component {
                     <ul>
                         <Link className="profile-link" to={`/${this.props.currentUserId}/profile/reservations`}>Reservations</Link>
                         <Link className="profile-link" to={`/${this.props.currentUserId}/profile`}>Account Details</Link>
-                        <Link className="profile-link" to={`/users/${this.props.currentUserId}/fav`}>Saved Restaurants</Link>
-                        <Link className="profile-link" to={`/users/${this.props.currentUserId}/reviews`}>Reviews</Link>
+                        <Link className="profile-link">Favorite Restaurants</Link>
+                        <Link className="profile-link" to={`/${this.props.currentUserId}/profile/reviews`}>Reviews</Link>
                     </ul>
                 </div>
 
                 <div className="form-section">
                     <div className="user-row"></div>
-                    {/* <Switch> */}
+             
                     <Route exact path={`/:userId/profile/reservations`}  component={Reservations}/>
                     <Route exact path={`/:userId/profile`} component={UserEditForm} />
+                    <Route exact path={'/:userId/profile/reviews'} component={UserReviews}  /> 
 
-                    {/* </Switch> */}
+         
                     {/* <Route exact path={`/users/:userId/bookings`} component={UserBookingIndexContainer} />
                     <Route exact path={`/users/:userId/fav`} component={UserFavIndexContainer} /> */}
                 </div>
-
-
+                    <div className="right-side"></div>
                 </div>
-
 
 
 

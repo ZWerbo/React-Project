@@ -12,7 +12,7 @@ class ReservationProfileItem extends React.Component {
 
             <div>
                 <Link to={`/reservations/${this.props.reservation.id}`}>Here it is</Link>
-        </div>
+            </div>
             )
     }
 

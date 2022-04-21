@@ -48,7 +48,7 @@ class RestaurantShow extends React.Component {
         var write;
         var signInPlease;
         if(this.props.currentUserId !== null) {
-            write =   <Link className="review-button-container" to={`/restaurants/${this.props.restaurant.id}/review`} > 
+            write =   <Link className="review-button-container" to={`/restaurants/${this.props.restaurant.name}/${this.props.restaurant.id}/review`} > 
                         <button className="review-button" 
                         >Write a review</button>
                         </Link>

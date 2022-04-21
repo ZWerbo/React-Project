@@ -22,13 +22,9 @@ const mapDTP = dispatch => {
     return {
         login: (user) => dispatch(login(user)),
         action: () => dispatch(logout()),
-        otherForm: (
-            <button onClick={() => dispatch(openModal('login'))}>
-              Signup
-            </button>
-          ),
-          closeModal: () => dispatch(closeModal()),
-          clearErrors: () => dispatch(clearSessionError())
+        closeModal: () => dispatch(closeModal()),
+        clearErrors: () => dispatch(clearSessionError()),
+        openModal: modal => dispatch(openModal(modal))
     }
 }
 

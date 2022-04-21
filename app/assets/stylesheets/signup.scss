@@ -1,5 +1,6 @@
 .signup-submit {
-    margin-left: 25%;
+    // margin-left: 25%;
+    margin-left: 21%;
     width: 80%;
     height: 50px;
     margin-bottom: 10px;
@@ -8,7 +9,9 @@
     font-size: 18px;
     border: 0px;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: pointer;   
+    // position: absolute;
+    // position: fixed;
 }
 
 .signup-form-container {
@@ -22,11 +25,15 @@
 }
 
 .signup-submit-container{
-    padding-top: 25px;
+
+
 
 }
 .signup-form {
 padding-left: 100px;
+height: 310px;
+width: 225px;
+// position: absolute;
 }
 
 .signup-input {
@@ -40,4 +47,29 @@ padding-left: 100px;
         outline: .05rem solid darkgray;
         transition: 200ms;
     }
+}
+
+.signup-errors {
+    margin-bottom: -28px;
+    margin-top: -5px;
+    font-size: 13px;
+
+}
+
+.signup-login-open{
+    // margin-left: 175px;
+    border-radius: 5px;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 17px;
+    border: none;
+    background-color: white;
+    color: #da3743;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.already-have {
+    margin: 0px;
+    margin-left: 85px;
+    font-family: 'Commissioner', sans-serif;
 }

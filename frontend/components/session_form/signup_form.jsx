@@ -35,18 +35,6 @@ class SignupForm extends React.Component {
         this.props.signup(user)
     }
 
-    // renderErrors() {
-    //     return(
-    //         <ul>
-    //             {this.props.errors.map((error, i) => (
-    //                 <li key={`error-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     )
-    // }
-
     renderErrors() {
       const { errors } = this.props
       return(
@@ -55,24 +43,33 @@ class SignupForm extends React.Component {
             null
           ) : (
             errors.map((error, i) => (
-            <li key={`error-${i}`}>
+            <ul key={`error-${i}`}>
               {error}
-            </li>
+            </ul>
             ))
           )}
         </ul>
       );
     }
 
+    renderError(field){
+      const error = this.props.errors.filter(error => error.includes(field));
+      return (
+          <div className="form-errors">
+              {error[0]}
+          </div>
+      )
+  }
+
 
 
     render(){
+      // console.log(this.renderErrors())
         return (
             <div className="signup-form-container">
             <div onClick={this.props.closeModal} className="close-x" >X</div>
             <form onSubmit={this.handleSubmit} className="signup-form-box">
-              <br/>
-              { this.renderErrors() }
+              {/* { this.renderErrors() } */}
 
 
               <div className="signup-form">
@@ -86,7 +83,10 @@ class SignupForm extends React.Component {
                     className="signup-input"
                     placeholder="Username"
                   />
-        
+                  <div className="signup-errors" >
+                     {this.renderError('Username')}
+
+                  </div>
                 <br/>
        
                   <br />
@@ -97,6 +97,10 @@ class SignupForm extends React.Component {
                     className="signup-input"
                     placeholder="Email"
                   />
+                  <div className="signup-errors"  >
+
+                  {this.renderError('Email')}
+                  </div>
              
                 <br/>
             
@@ -107,11 +111,23 @@ class SignupForm extends React.Component {
                     className="signup-input"
                     placeholder="Password"
                   />
+                  <div className="signup-errors"  >
+                  {this.renderError('Password')}
+
+                  </div>
          
                 <br/>
               </div>
               <div className="signup-submit-container">
-                <input className="signup-submit" type="submit" value="Sign up" />
+                
+                 <input className="signup-submit" type="submit" value="Sign up"/>
+                 <br />
+                 <p className="already-have">
+                 Already have an account? 
+            <button className="signup-login-open" onClick={() => this.props.openModal('login')} >login</button>
+
+                 </p>
+                 <br />
 
               </div>
 

@@ -37,17 +37,17 @@ class LoginForm extends React.Component {
     renderErrors() {
         const { errors } = this.props
         return(
-          <ul className ="session-errors">
+          <div className ="session-errors">
             {(errors.length === 0) ? (
               null
             ) : (
               errors.map((error, i) => (
-              <li key={`error-${i}`}>
+              <ul className="login-errors" key={`error-${i}`}>
                 {error}
-              </li>
+              </ul>
               ))
             )}
-          </ul>
+          </div>
         );
       }
 
@@ -63,12 +63,15 @@ class LoginForm extends React.Component {
            { this.renderErrors() }
            <br />
                 <br />
+                <br />
+         
    
                   <input type="text"
                     value={this.state.username}
                     onChange={this.update('username')}
                     className="login-input"
                     placeholder="Username"
+                    required
                     />
          
            
@@ -80,14 +83,15 @@ class LoginForm extends React.Component {
                     onChange={this.update('password')}
                     className="login-input"
                     placeholder="Password"
+                    required
                     />
            
 
                 <input className="session-submit" type="submit" value="Login" />
             <button className="demo-login" onClick={this.handleDemo}>Demo User</button>
             <br />
-            <p>Dont have an account?</p>
-            <p>{this.props.otherForm}</p>
+            <p className="dont-have">Dont have an account? <button className="login-signup-open" onClick={() => this.props.openModal('signup')}>Signup</button></p>
+
             </form>
           </div>
         )
@@ -95,13 +99,3 @@ class LoginForm extends React.Component {
 }
 
 export default LoginForm
-// renderErrors(){
-//     return (
-//         <ul className="form-errors">
-//             {this.props.errors.map((error, idx) => (
-//                <li key={idx}>{error}</li>
-//                )
-//             )}
-//         </ul>
-//     );
-// }

@@ -33,7 +33,7 @@ const App = () => {
     <Route exact path='/search' component={SearchbarContainer} />
     <Route exact path="/restaurants/:restaurantId" component={Modal}/>
     <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer}/>
-    <Route exact path="/restaurants/:restaurantId/review" component={ReviewFormContainer}/>
+    <Route exact path="/restaurants/:restaurantName/:restaurantId/review" component={ReviewFormContainer}/>
     <Route exact path="/restaurants/:restaurantId/review/:reviewId" component={EditReviewFormContainer}/>
     <ProtectedRoute exact path="/reservations/:reservationId" component={ConfirmationReservationContainer} />
     <ProtectedRoute path="/:userId/profile" component={UserProfileContainer} />

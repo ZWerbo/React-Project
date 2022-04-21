@@ -4,17 +4,15 @@ import { connect } from "react-redux";
 
 class ReservationProfile extends React.Component {
     constructor(props) {
-        debugger
         super(props)
     }
 
 
     render() {
         return (
-            <div >
+            <div  className="reservation-container">
+                <h1>Your reservations</h1>
 
-
-        <p>djalksdjflkasjdf;lajsd;lfkjasl;dkfjasdf</p>
             </div>
         )
     }
@@ -24,7 +22,7 @@ class ReservationProfile extends React.Component {
 
 
 const mSTP = state => {
-    console.log(state.entities.users[state.session.id])
+    console.log(state)
     return {
         currentUser: state.entities.users[state.session.id]
     }

@@ -1,11 +1,9 @@
 json.extract! user, :id, :username, :email
-#user.reviews.each do |review| 
-#    json.extract review
-#end 
 
-json.reviews do 
-    json.array! user.reviews, :body, :rating
+
+json.reviews do
+    json.array! user.reviews, :body, :rating, :restaurant_name, :restaurant_id, :id
 end
 
 
-#json.partial! "api/users/user", user: @user
+

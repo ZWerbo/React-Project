@@ -7,7 +7,6 @@ const mapSTP = (state) => {
     return {
         currentUser: state.session.id, 
         currentUsername: state.session.username
-        // currentUsers: session[id]
     }
 }
 

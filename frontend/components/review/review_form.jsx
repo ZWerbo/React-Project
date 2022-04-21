@@ -6,7 +6,7 @@ class CreateReview extends React.Component {
     
     constructor(props) {
         super(props)
-        this.state = {rating: '', body: '', author_id: this.props.currentUserId, restaurant_id: this.props.restaurantId}
+        this.state = {rating: '', body: '', author_id: this.props.currentUserId, restaurant_id: this.props.restaurantId, restaurant_name: this.props.restaurantName}
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
@@ -21,7 +21,7 @@ class CreateReview extends React.Component {
     }
 
     render() {
-    
+        console.log(this.props.restaurantName)
         return (
             <div className="review-form-container">
 

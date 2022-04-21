@@ -17,6 +17,8 @@
 
 .right-side{
     background-color: #f6f6f6;
+    height: 2000px;
+    width: 500px;
 }
 .far-left-box{
     height: 2000px;
@@ -70,8 +72,68 @@
 }
 
 .edit-name-input {
-    width: 383px;
+    width: 375px;
     margin-top: 15px;
     padding: 5px;
 }
 
+.edit-name-input2 {
+    width: 375px;
+    margin-top: 15px;
+    padding: 5px;
+    margin-left: 16px;
+}
+
+
+
+.edit-email-input {
+    width: 780px;
+    margin-top: 15px;
+    padding: 5px;
+    margin-top: 23px;
+    margin-bottom: 23px;
+}
+
+.edit-column {
+    display: flex;
+    flex-direction: column;
+    margin-top: 23px;
+}
+
+.user-update-button {
+    cursor: pointer;
+    height: 45px;
+    width: 793px;
+    border-radius: 5px;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 18px;
+    border: none;
+    background-color: crimson;
+    color: white;
+}
+
+
+
+.reservation-container {
+    background-color: white;
+    width: 600px;
+    min-height: 400px;
+    margin: 50px;
+}
+
+.user-review-container {
+    background-color: white;
+    width: 600px;
+    min-height: 400px;
+    margin: 50px;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.single-user-review {
+    padding: 10px;
+}
+
+.your-reviews-header {
+}

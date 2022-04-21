@@ -457,7 +457,7 @@ var App = function App() {
     component: _restaurant_restaurant_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     exact: true,
-    path: "/restaurants/:restaurantId/review",
+    path: "/restaurants/:restaurantName/:restaurantId/review",
     component: _review_review_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     exact: true,
@@ -556,8 +556,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapSTP = function mapSTP(state) {
   return {
     currentUser: state.session.id,
-    currentUsername: state.session.username // currentUsers: session[id]
-
+    currentUsername: state.session.username
   };
 };
 
@@ -1646,7 +1645,7 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
       if (this.props.currentUserId !== null) {
         write = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
           className: "review-button-container",
-          to: "/restaurants/".concat(this.props.restaurant.id, "/review")
+          to: "/restaurants/".concat(this.props.restaurant.name, "/").concat(this.props.restaurant.id, "/review")
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "review-button"
         }, "Write a review"));
@@ -1975,7 +1974,8 @@ var CreateReview = /*#__PURE__*/function (_React$Component) {
       rating: '',
       body: '',
       author_id: _this.props.currentUserId,
-      restaurant_id: _this.props.restaurantId
+      restaurant_id: _this.props.restaurantId,
+      restaurant_name: _this.props.restaurantName
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -2005,6 +2005,7 @@ var CreateReview = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
+      console.log(this.props.restaurantName);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "review-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -2076,13 +2077,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
+  // console.log(ownProps.match.params.restaurantName)
   return {
     currentUserId: state.session.id,
-    restaurantId: ownProps.match.params.restaurantId // restaurantId: ownProps.match.params.restaurantId
-    // restaurantId: ownProps.ownProps.match.params.restaurantId
-    // restaurant: state.entities.restaurants[ownProps.match.params.restaurantId]
-    // review: state.entities.reviews[ownProps.match.params.reviewId]
-
+    restaurantId: ownProps.match.params.restaurantId,
+    restaurantName: ownProps.match.params.restaurantName
   };
 };
 
@@ -2687,10 +2686,11 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
     key: "renderErrors",
     value: function renderErrors() {
       var errors = this.props.errors;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "session-errors"
       }, errors.length === 0 ? null : errors.map(function (error, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+          className: "login-errors",
           key: "error-".concat(i)
         }, error);
       }));
@@ -2698,6 +2698,8 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         id: "login",
         className: "login-form-container"
@@ -2706,18 +2708,20 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
-      }, "X"), this.renderErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "X"), this.renderErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         value: this.state.username,
         onChange: this.update('username'),
         className: "login-input",
-        placeholder: "Username"
+        placeholder: "Username",
+        required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
         className: "login-input",
-        placeholder: "Password"
+        placeholder: "Password",
+        required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "session-submit",
         type: "submit",
@@ -2725,23 +2729,21 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "demo-login",
         onClick: this.handleDemo
-      }, "Demo User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Dont have an account?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.props.otherForm)));
+      }, "Demo User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "dont-have"
+      }, "Dont have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "login-signup-open",
+        onClick: function onClick() {
+          return _this3.props.openModal('signup');
+        }
+      }, "Signup"))));
     }
   }]);
 
   return LoginForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginForm); // renderErrors(){
-//     return (
-//         <ul className="form-errors">
-//             {this.props.errors.map((error, idx) => (
-//                <li key={idx}>{error}</li>
-//                )
-//             )}
-//         </ul>
-//     );
-// }
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginForm);
 
 /***/ }),
 
@@ -2792,16 +2794,14 @@ var mapDTP = function mapDTP(dispatch) {
     action: function action() {
       return dispatch(logout());
     },
-    otherForm: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
-      onClick: function onClick() {
-        return dispatch((0,_actions_modal__WEBPACK_IMPORTED_MODULE_4__.openModal)('login'));
-      }
-    }, "Signup"),
     closeModal: function closeModal() {
       return dispatch((0,_actions_modal__WEBPACK_IMPORTED_MODULE_4__.closeModal)());
     },
     clearErrors: function clearErrors() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.clearSessionError)());
+    },
+    openModal: function openModal(modal) {
+      return dispatch((0,_actions_modal__WEBPACK_IMPORTED_MODULE_4__.openModal)(modal));
     }
   };
 };
@@ -2892,18 +2892,7 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       this.props.clearErrors;
       var user = Object.assign({}, this.state);
       this.props.signup(user);
-    } // renderErrors() {
-    //     return(
-    //         <ul>
-    //             {this.props.errors.map((error, i) => (
-    //                 <li key={`error-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     )
-    // }
-
+    }
   }, {
     key: "renderErrors",
     value: function renderErrors() {
@@ -2911,14 +2900,27 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "session-errors"
       }, errors.length === 0 ? null : errors.map(function (error, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
           key: "error-".concat(i)
         }, error);
       }));
     }
   }, {
+    key: "renderError",
+    value: function renderError(field) {
+      var error = this.props.errors.filter(function (error) {
+        return error.includes(field);
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "form-errors"
+      }, error[0]);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
+      // console.log(this.renderErrors())
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signup-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2927,7 +2929,7 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "signup-form-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.renderErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signup-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
@@ -2935,25 +2937,38 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('username'),
         className: "signup-input",
         placeholder: "Username"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "signup-errors"
+      }, this.renderError('Username')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         value: this.state.email,
         onChange: this.update('email'),
         className: "signup-input",
         placeholder: "Email"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "signup-errors"
+      }, this.renderError('Email')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
         className: "signup-input",
         placeholder: "Password"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "signup-errors"
+      }, this.renderError('Password')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signup-submit-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "signup-submit",
         type: "submit",
         value: "Sign up"
-      }))));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "already-have"
+      }, "Already have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "signup-login-open",
+        onClick: function onClick() {
+          return _this3.props.openModal('login');
+        }
+      }, "login")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null))));
     }
   }]);
 
@@ -3006,7 +3021,7 @@ var mapDTP = function mapDTP(dispatch) {
     },
     otherForm: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
       onClick: function onClick() {
-        return dispatch(openModal('login'));
+        return dispatch((0,_actions_modal__WEBPACK_IMPORTED_MODULE_4__.openModal)('login'));
       }
     }, "Login"),
     closeModal: function closeModal() {
@@ -3014,6 +3029,9 @@ var mapDTP = function mapDTP(dispatch) {
     },
     clearErrors: function clearErrors() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.clearSessionError)());
+    },
+    openModal: function openModal(modal) {
+      return dispatch((0,_actions_modal__WEBPACK_IMPORTED_MODULE_4__.openModal)(modal));
     }
   };
 };
@@ -3133,14 +3151,15 @@ var ReservationProfile = /*#__PURE__*/function (_React$Component) {
   function ReservationProfile(props) {
     _classCallCheck(this, ReservationProfile);
 
-    debugger;
     return _super.call(this, props);
   }
 
   _createClass(ReservationProfile, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "djalksdjflkasjdf;lajsd;lfkjasl;dkfjasdf"));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "reservation-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Your reservations"));
     }
   }]);
 
@@ -3148,7 +3167,7 @@ var ReservationProfile = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 var mSTP = function mSTP(state) {
-  console.log(state.entities.users[state.session.id]);
+  console.log(state);
   return {
     currentUser: state.entities.users[state.session.id]
   };
@@ -3224,10 +3243,28 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, " Firstname", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "edit-name-input",
         type: "text"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, " Lastname", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, " \xA0\xA0\xA0 Lastname", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
-        className: "edit-name-input"
-      })))));
+        className: "edit-name-input2"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "edit-column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Email ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "edit-email-input"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Username ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "edit-email-input"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Phonenumber", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "edit-email-input"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Change Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "edit-column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, " Password ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "edit-email-input"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "user-update-button"
+      }, "Save Changes")));
     }
   }]);
 
@@ -3262,10 +3299,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _reservation_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reservation_item */ "./frontend/components/user_profile/reservation_item.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
 /* harmony import */ var _user_edit_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_edit_form */ "./frontend/components/user_profile/user_edit_form.jsx");
 /* harmony import */ var _reservations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reservations */ "./frontend/components/user_profile/reservations.jsx");
+/* harmony import */ var _user_reviews__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user_reviews */ "./frontend/components/user_profile/user_reviews.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3297,6 +3335,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var UserProfile = /*#__PURE__*/function (_React$Component) {
   _inherits(UserProfile, _React$Component);
 
@@ -3310,8 +3349,8 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
 
   _createClass(UserProfile, [{
     key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchAllReservations(); // this.props.fetchAllReviews()
+    value: function componentDidMount() {// this.props.fetchAllReservations()
+      // this.props.fetchAllReviews()
     }
   }, {
     key: "render",
@@ -3336,31 +3375,36 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
         className: "far-left-box"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "left"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
         className: "profile-link",
         to: "/".concat(this.props.currentUserId, "/profile/reservations")
-      }, "Reservations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      }, "Reservations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
         className: "profile-link",
         to: "/".concat(this.props.currentUserId, "/profile")
-      }, "Account Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      }, "Account Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+        className: "profile-link"
+      }, "Favorite Restaurants"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
         className: "profile-link",
-        to: "/users/".concat(this.props.currentUserId, "/fav")
-      }, "Saved Restaurants"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-        className: "profile-link",
-        to: "/users/".concat(this.props.currentUserId, "/reviews")
+        to: "/".concat(this.props.currentUserId, "/profile/reviews")
       }, "Reviews"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "form-section"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-row"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_6__.Route, {
         exact: true,
         path: "/:userId/profile/reservations",
         component: _reservations__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_6__.Route, {
         exact: true,
         path: "/:userId/profile",
         component: _user_edit_form__WEBPACK_IMPORTED_MODULE_2__["default"]
-      }))));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: '/:userId/profile/reviews',
+        component: _user_reviews__WEBPACK_IMPORTED_MODULE_4__["default"]
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "right-side"
+      })));
     }
   }]);
 
@@ -3413,6 +3457,148 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_user_profile__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/user_profile/user_review_item.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/user_profile/user_review_item.jsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_icons_ai__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-icons/ai */ "./node_modules/react-icons/ai/index.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
+var UserReviewItem = function UserReviewItem(_ref) {
+  var body = _ref.body,
+      rating = _ref.rating,
+      restaurant_id = _ref.restaurant_id,
+      restaurant_name = _ref.restaurant_name,
+      reviewId = _ref.reviewId;
+  console.log(restaurant_name);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "single-user-review"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, restaurant_name), _toConsumableArray(Array(rating)).map(function (star) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_ai__WEBPACK_IMPORTED_MODULE_1__.AiFillStar, {
+      color: "red"
+    });
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), body, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/restaurants/".concat(restaurant_id, "/review/").concat(reviewId)
+  }, "Edit"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserReviewItem);
+
+/***/ }),
+
+/***/ "./frontend/components/user_profile/user_reviews.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/user_profile/user_reviews.jsx ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _user_review_item_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_review_item.jsx */ "./frontend/components/user_profile/user_review_item.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var UserReviews = /*#__PURE__*/function (_React$Component) {
+  _inherits(UserReviews, _React$Component);
+
+  var _super = _createSuper(UserReviews);
+
+  function UserReviews(props) {
+    _classCallCheck(this, UserReviews);
+
+    return _super.call(this, props);
+  }
+
+  _createClass(UserReviews, [{
+    key: "render",
+    value: function render() {
+      if (!this.props.reviews) return null;
+      console.log(this.props.reviews);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "user-review-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "your-reviews-header"
+      }, "Your Reviews"), this.props.reviews.map(function (review) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_review_item_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          body: review.body,
+          rating: review.rating,
+          restaurant_name: review.restaurant_name,
+          restaurant_id: review.restaurant_id,
+          reviewId: review.id
+        });
+      }));
+    }
+  }]);
+
+  return UserReviews;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+var mSTP = function mSTP(state) {
+  return {
+    currentUser: state.entities.users[state.session.id],
+    reviews: state.entities.users[state.session.id].reviews
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {};
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(UserReviews));
 
 /***/ }),
 

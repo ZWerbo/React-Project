@@ -118,3 +118,26 @@
     height: 20px;
     opacity: .2;
 }
+
+.login-errors {
+  margin-left: -32px;
+  margin-bottom: -15px;
+}
+
+.login-signup-open{
+  border-radius: 5px;
+  font-family: 'Commissioner', sans-serif;
+  font-size: 17px;
+  border: none;
+  background-color: white;
+  color: #da3743;
+  padding: 5px;
+  cursor: pointer;
+}
+.dont-have {
+  font-family: 'Commissioner', sans-serif;
+}
+
+.login-errors {
+  margin-bottom: -35px;
+}

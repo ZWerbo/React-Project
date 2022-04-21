@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { signup, clearSessionError } from "../../actions/session_actions";
 import SessionForm from "./signup_form";
-import { closeModal } from "../../actions/modal";
+import { closeModal, openModal } from "../../actions/modal";
 
 
 
@@ -24,7 +24,8 @@ const mapDTP = dispatch => {
               Login
             </button>),
         closeModal: () => dispatch(closeModal()),
-        clearErrors: () => dispatch(clearSessionError())
+        clearErrors: () => dispatch(clearSessionError()),
+        openModal: modal => dispatch(openModal(modal))
 
     }
 }

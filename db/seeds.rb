@@ -138,28 +138,33 @@ rev1 = Review.create!(
     body: 'food was excellent! filled my gullet with delicious sushi',
     rating: '5',
     author_id: user1.id,
-    restaurant_id: rest3.id
+    restaurant_id: rest3.id,
+    restaurant_name: rest3.name
     )
 
 rev2 = Review.create!(
     body: 'Ive got marinara on my sweater already',
     rating: '4',
     author_id: user1.id,
-    restaurant_id: rest1.id
+    restaurant_id: rest1.id,
+    restaurant_name: rest1.name
+
 )
 
 rev3 = Review.create!(
     body: 'Food was not super kewl, i almost got sick.',
     rating: '1',
     author_id: user1.id,
-    restaurant_id: rest2.id
+    restaurant_id: rest2.id,
+    restaurant_name: rest2.name
 )
 
 rev4 = Review.create!(
     body: 'My friend almost got sick, but I did not, it was aight.',
     rating: '3',
     author_id: user2.id,
-    restaurant_id: rest2.id
+    restaurant_id: rest2.id,
+    restaurant_name: rest2.name
 )
 
 rev5 = Review.create!(
@@ -173,13 +178,15 @@ rev6 = Review.create!(
     body: 'I love spaghetti, bro',
     rating: '5',
     author_id: user3.id,
-    restaurant_id: rest1.id
+    restaurant_id: rest1.id,
+    restaurant_name: rest1.name
 )
 
 rev7 = Review.create!(
     body: 'I love spaghetti also bro :-) ',
     rating: '5',
     author_id: user4.id,
-    restaurant_id: rest1.id
+    restaurant_id: rest1.id,
+    restaurant_name: rest1.name
 )
 
