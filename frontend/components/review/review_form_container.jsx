@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal";
 
 const mSTP = (state, ownProps) => {
-    // console.log(ownProps.match.params.restaurantName)
 
     return {
         currentUserId: state.session.id,

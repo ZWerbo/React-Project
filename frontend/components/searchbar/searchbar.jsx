@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const SearchBar =({searchResult, searchInput, setSearchInput}) => {
     // console.log(setUpdated)
@@ -67,7 +68,9 @@ const SearchBar =({searchResult, searchInput, setSearchInput}) => {
                     </select>
                     {/* <input type="text" className="search-input-searchbar" /> */}
                     <input type="text" className="search-input-searchbar" placeholder="Restaurant, or Cuisine" value={searchInput} onChange={update} />
-                    <button onSubmit={handleSubmit} className="search-bar-button">Lets go</button>
+                    <Link to={'/search'}>
+                    <button className="search-bar-button">Lets go</button>
+                    </Link>
                    </form>
                </div>
              

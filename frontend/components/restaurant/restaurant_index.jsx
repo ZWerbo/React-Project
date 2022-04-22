@@ -19,7 +19,7 @@ class RestaurantIndex extends React.Component {
 
     restaurantMatch(restaurant) {
         // debugger
-        if(restaurant.name.toLowerCase().includes(this.props.searchInput.toLowerCase())) {
+        if(restaurant.name.toLowerCase().includes(this.props.searchInput.toLowerCase()) || restaurant.cuisine.toLowerCase().includes(this.props.searchInput.toLowerCase())) {
             return <RestaurantIndexItem searchInput={this.props.searchInput} restaurant={restaurant} reviews={this.props.reviews} key={restaurant.id}/>
 
         }

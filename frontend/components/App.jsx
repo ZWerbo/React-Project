@@ -11,6 +11,8 @@ import ConfirmationReservationContainer from "./reservations/confirmation_reserv
 import UserProfileContainer from "./user_profile/user_profile_container";
 import SearchbarContainer from "./searchbar/searchbar_container";
 import MainPage from './main/main_page.jsx'
+import SearchPage from "./searchbar/search_page";
+import SearchPageContainer from "./searchbar/search_page_container";
 const App = () => {
   //exact path broke the switch on the profile to make the routes go either way. 
   return (
@@ -30,7 +32,7 @@ const App = () => {
     {/* <Route exact path='/' component={() => <SearchbarContainer setUpdated={setUpdated}/>} />
     <Route exact path='/' component={RestaurantIndexContainer} updated={updated} /> */}
     <Route exact path='/' component={MainPage}   />
-    <Route exact path='/search' component={SearchbarContainer} />
+    <Route exact path='/search' component={SearchPageContainer} />
     <Route exact path="/restaurants/:restaurantId" component={Modal}/>
     <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer}/>
     <Route exact path="/restaurants/:restaurantName/:restaurantId/review" component={ReviewFormContainer}/>

@@ -1,0 +1,139 @@
+.search-page-search-box {
+
+    height: 200px;
+    width: 100%;
+    z-index: 1;
+
+    background-image: url(assets/panoramarestsmall.jpeg) {
+        object-fit: cover;
+    };
+
+ }
+
+ .whole-search-page{
+     display: flex;
+ }
+
+ .left-side-searchpage{
+    width: 400px;
+    min-height: 500px;
+    text-align: center;
+    font-family: 'Commissioner', sans-serif;
+ }
+
+
+ .what-are-you {
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 38px;
+ }
+
+ .searchpage-bar-component-container{
+    text-align: center;
+ }
+
+ .searchpage-input-searchbar{
+    margin-left: 20px;
+    cursor: pointer;
+    height: 49px;
+    width: 400px;
+    border: 1px solid lightgray;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 12px;
+    padding-left: 25px;
+ }
+
+
+ .search_page_restaurant_index_outside {
+    display: flex;
+    flex-direction: column;
+ }
+
+.search-page-restaurant-index-inside {
+    margin: 20px;
+    border-bottom: solid 2px lightgray;
+    width: 600px;
+    height: 200px;
+    // text-align: center;
+
+    position: relative;
+    cursor: cursor;
+    font-family: 'Overpass', sans-serif;
+    animation-duration: 1s;
+    animation-name: fade-in;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchpage-rest-image {
+    max-height: 175px;
+    max-width: 230px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.searchpage-restaurant-index-header {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+.rest-info {
+    flex-direction: column;
+}
+
+.rest-rate-review{
+    display: flex;
+    flex-direction: row;
+}
+
+.star-search-rating {
+    margin-left: 10px;
+}
+
+.search-buffer-div {
+    height: 50px;
+}
+
+.searchpage-times-buttons {
+    display: flex
+}
+
+.image-rest-info-container{
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    width: 600px;;
+}
+.search-link1 {
+    width: 600px;
+    height: 260px;
+    text-decoration: none;
+    color: black;
+}
+
+.price-left {
+    font-size: 18px;
+    color: #2d333f;
+}
+
+.money-button {
+    background-color: white;
+    border-radius: 5px;
+    border: solid 2px lightgray;
+    width: 70px;
+    height: 38px;
+    margin-left: -8px;
+}
+.neigborhood-search {
+    display: flex;
+    flex-direction: column;
+}
+
+.neighborhood {
+    padding: 5px;
+}
+

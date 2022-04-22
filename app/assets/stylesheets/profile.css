@@ -4,6 +4,8 @@
     border-bottom: 2px solid lightgray;
     border-top: 2px solid lightgray;
     padding-left: 287px;
+    font-family: 'Commissioner', sans-serif;
+    
 }
 
 .form-section {
@@ -24,20 +26,22 @@
     height: 2000px;
     width: 200px;
     display: flex;
+    background-color: #f6f6f6;
 }
 .left {
     display: flex;
     background-color: #f6f6f6;
     width: 250px;
-    /* font-family: "Roboto", sans-serif; */
     font-weight: 300;
-    font-size: 13px;
-    padding-left:  35px;
+    font-size: 16px;
+    padding-left:  10px;
+    padding-right: 65px;
     padding-top: 37px;
     box-sizing: border-box;
     height: max-content;
     text-decoration: none;
     height: 2000px;
+    font-family: 'Commissioner', sans-serif;
 }
 
 .left ul {
@@ -45,11 +49,18 @@
     flex-direction: column;
 }
 
+
+
 .profile-link {
     text-decoration: none;
     padding: 10px;
     font-size: 16px;
     color: black;
+}
+
+.profile-link:hover {
+    cursor: pointer;
+    color: crimson;
 }
 
 .account-details-container {
@@ -136,4 +147,14 @@
 }
 
 .your-reviews-header {
+}
+
+.reservation-profile-info {
+    font-family: 'Overpass', sans-serif;
+    padding: 10px;
+}
+
+.reservation-info-profile {
+    display: flex;
+    flex-direction: row;
 }

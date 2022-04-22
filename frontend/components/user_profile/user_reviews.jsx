@@ -10,8 +10,9 @@ class UserReviews extends React.Component {
 
     render() {
         if(!this.props.reviews) return null;
+        if(!this.props.currentUser.reviews) return null;
    
-        console.log(this.props.reviews)
+        // console.log(this.props.reviews)
         return (
             <div className="user-review-container">
                     <h1 className="your-reviews-header">Your Reviews</h1>
@@ -23,7 +24,7 @@ class UserReviews extends React.Component {
 
 
 const mSTP = (state) => {
-
+console.log(state)
     return {
         currentUser: state.entities.users[state.session.id],
         reviews: state.entities.users[state.session.id].reviews
@@ -34,7 +35,7 @@ const mSTP = (state) => {
 
 const mDTP = dispatch => {
     return {
-
+        fetchUser: (user) => dispatch(fetchUser(user))
     }
 }
 

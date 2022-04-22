@@ -16,7 +16,7 @@ class EditReview extends React.Component {
         e.preventDefault();
         this.props.updateReview(this.state)
 
-        .then(  () => this.props.history.push(`/restaurants/${this.state.restaurant_id}`)     )
+        .then(  () => this.props.history.push(`/restaurants/${this.state.restaurant_id}`)    )
         
     }
 

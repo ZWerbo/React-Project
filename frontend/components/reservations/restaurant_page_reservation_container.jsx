@@ -4,7 +4,6 @@ import { createReservation } from "../../actions/reservation_action";
 
 const mSTP = (state, ownProps) => {
  
-    console.log(state.entities.users)
     return {
         currentUserId: state.session.id,
         currentUserEmail: state.session.email,
