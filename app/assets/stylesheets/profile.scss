@@ -1,0 +1,264 @@
+.profile-header {
+    margin: auto;
+    padding: 16px;
+    border-bottom: 2px solid lightgray;
+    border-top: 2px solid lightgray;
+    // padding-left: 287px;
+    font-family: 'Commissioner', sans-serif;
+    padding-left: 210px;
+    
+}
+
+.form-section {
+    background-color: #f6f6f6;
+    width: 1000px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.right-side{
+    background-color: #f6f6f6;
+    height: 2000px;
+    width: 500px;
+}
+.far-left-box{
+    height: 2000px;
+    width: 200px;
+    display: flex;
+    background-color: #f6f6f6;
+}
+.left {
+    display: flex;
+    background-color: #f6f6f6;
+    width: 250px;
+    font-weight: 300;
+    font-size: 16px;
+    padding-left:  10px;
+    padding-right: 65px;
+    padding-top: 37px;
+    box-sizing: border-box;
+    height: max-content;
+    text-decoration: none;
+    height: 2000px;
+    font-family: 'Commissioner', sans-serif;
+}
+
+.left ul {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.profile-link {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+    color: black;
+}
+
+.profile-link:hover {
+    cursor: pointer;
+    color: crimson;
+}
+
+.account-details-container {
+    background: #fff;
+    border-bottom: 0.0625rem solid #d8d9db;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    width: 100%;
+    height: 700px;
+}
+
+.first-last-row {
+    display: flex;
+    width: 776px;
+    justify-content: space-between;
+    margin-top: 23px;
+}
+
+.edit-name-input {
+    width: 375px;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.edit-name-input2 {
+    width: 375px;
+    margin-top: 15px;
+    padding: 5px;
+    margin-left: 16px;
+}
+
+
+
+.edit-email-input {
+    width: 780px;
+    margin-top: 15px;
+    padding: 5px;
+    margin-top: 23px;
+    margin-bottom: 23px;
+}
+
+.edit-column {
+    display: flex;
+    flex-direction: column;
+    margin-top: 23px;
+}
+
+.user-update-button {
+    cursor: pointer;
+    height: 45px;
+    width: 793px;
+    border-radius: 5px;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 18px;
+    border: none;
+    background-color: crimson;
+    color: white;
+}
+
+
+
+.reservation-container {
+    /* background-color: white;
+    width: 600px;
+    min-height: 400px;
+    margin: 50px; */
+    background-color: white;
+    width: 600px;
+    min-height: 400px;
+    margin: 50px;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.user-review-container {
+    background-color: white;
+    width: 600px;
+    min-height: 400px;
+    margin: 50px;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.single-user-review {
+    padding: 10px;
+    width: 550px;
+    border-bottom: 1px solid lightgray;
+    font-family: 'Commissioner', sans-serif;
+}
+.profile-review-edit-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.your-reviews-header {
+}
+
+.reservation-profile-info {
+    font-family: 'Overpass', sans-serif;
+    padding: 10px;
+}
+
+.edit-review-profile {
+    font-family: 'Commissioner', sans-serif;
+    font-size: 20px;
+    border: none;
+    background-color: white;
+    color: crimson;
+    padding: 5px;
+    border-radius: 5px;
+}
+.reservation-info-profile {
+    display: flex;
+    flex-direction: row;
+    margin-top: -28px;
+    margin-left: -9px;
+    
+}
+
+.single-reservation-profile {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid lightgray;
+    width: 550px;
+    padding: 10px;
+}
+
+.reservation-profile-button {
+    font-family: 'Commissioner', sans-serif;
+    font-size: 14px;
+    border: none;
+    background-color: white;
+    color: crimson;
+    padding: 5px;
+    border-radius: 5px;
+    width: 60px;
+    cursor: pointer;
+    margin-top: -4px;
+}
+
+.reservation-modify-delete {
+    display: flex;
+    flex-direction: row;
+    margin-top: -8px;
+    margin-left: -12px;
+}
+
+.user-favorite-container {
+    background-color: white;
+    width: 600px;
+    min-height: 400px;
+    margin: 50px;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+    border-radius: 5px;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 30px;
+}
+
+.single-user-favorite {
+    padding-top: 20px;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+}
+
+.image-favorite {
+    width: 200px;
+    height: 100px;
+}
+
+.favorite-restaurant-info{
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+
+}
+.unsave-button{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: -22px;
+}
+
+.unsave-button:hover {
+    color: crimson;
+}
+
+
+.favorite-restaurant-info div {
+    font-size: 14px;
+}

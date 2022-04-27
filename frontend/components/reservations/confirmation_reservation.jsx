@@ -1,6 +1,6 @@
 import React from "react";
 import { BsFillPeopleFill, BsFillCalendarFill, BsClock} from 'react-icons/bs'
-import { useLocation } from "react-router-dom";
+
 
 
 class ConfirmationReservation extends React.Component {
@@ -18,14 +18,14 @@ class ConfirmationReservation extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot){
         if(this.props.reservation !== prevProps.reservation) {
-            this.setState({ user_id: this.props.currentUserId, id: this.props.reservationId, date: this.props.reservation.date , time: this.props.reservation.time, size: this.props.reservation.size, email: this.props.reservation.email, restaurant_id: this.props.reservation.restaurant_id, phone_number: '', special_request: ''})
+            this.setState({ user_id: this.props.currentUserId, id: this.props.reservationId, date: this.props.reservation.date , time: this.props.reservation.time, size: this.props.reservation.size, email: this.props.reservation.email, restaurant_id: this.props.reservation.restaurant_id, restaurant_name: this.props.reservation.restaurant_name, phone_number: this.state.phone_number, special_request: ''})
             
         }
     }
 
     handleSubmit(e) {
         this.props.updateReservation(this.state)
-        .then(this.props.history.push(`/${this.props.currentUserId}/profile`))
+        // .then(this.props.history.push(`/${this.props.currentUserId}/profile`))
         
     }
 
@@ -54,11 +54,10 @@ class ConfirmationReservation extends React.Component {
                             <p className="confirmation-flex-interior"> <BsClock />  {this.state.time}</p>
                             <p  className="confirmation-flex-interior" >  <BsFillPeopleFill /> {this.props.reservation.size}</p>
                             <p  className="confirmation-flex-interior" type='date'> < BsFillCalendarFill />{this.props.reservation.date}</p>
-                            {/* <p className="date-confirmation-page"><input className="date-input-reserve" type="date" value={this.props.reservation.date}/></p> */}
                         </div>
 
                         <div>
-                            <input  className="phonenumber-confirm" type="text" value={this.state.phone_number} onChange={this.update('phone_number')} placeholder='phonenumber' />
+                            <input  className="phonenumber-confirm" type="tel" value={this.state.phone_number} onChange={this.update('phone_number')} placeholder='phonenumber' />
                             <input type="text" className="phonenumber-confirm"  readOnly value={this.props.reservation.email}/> 
                         </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_25_180945) do
+ActiveRecord::Schema.define(version: 2022_04_25_224405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_04_25_180945) do
     t.integer "restaurant_id", null: false
     t.text "special_request"
     t.string "email", null: false
-    t.integer "phone_number"
+    t.string "phone_number"
     t.integer "size", null: false
     t.date "date", null: false
     t.string "time"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2022_04_25_180945) do
     t.string "menu"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "neighborhood"
   end
 
   create_table "reviews", force: :cascade do |t|

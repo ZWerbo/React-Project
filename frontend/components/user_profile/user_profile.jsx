@@ -7,6 +7,7 @@ import  UserEditForm from "./user_edit_form";
 import { Switch } from "react-router-dom";
 import Reservations from "./reservations";
 import UserReviews from "./user_reviews";
+import UserFavorites from "./user_favorites";
 
 
 class UserProfile extends React.Component {
@@ -38,7 +39,7 @@ class UserProfile extends React.Component {
                     <ul>
                         <Link className="profile-link" to={`/${this.props.currentUserId}/profile/reservations`}>Reservations</Link>
                         <Link className="profile-link" to={`/${this.props.currentUserId}/profile`}>Account Details</Link>
-                        <Link className="profile-link">Favorite Restaurants</Link>
+                        <Link className="profile-link" to={`/${this.props.currentUserId}/profile/favorites`}>Saved Restaurants</Link>
                         <Link className="profile-link" to={`/${this.props.currentUserId}/profile/reviews`}>Reviews</Link>
                     </ul>
                 </div>
@@ -49,7 +50,8 @@ class UserProfile extends React.Component {
                     <Route exact path={`/:userId/profile/reservations`}  component={Reservations}/>
                     <Route exact path={`/:userId/profile`} component={UserEditForm} />
                     <Route exact path={'/:userId/profile/reviews'} component={UserReviews}  /> 
-
+                    <Route exact path={'/:userId/profile/favorites'} component={UserFavorites} />
+ 
          
                     {/* <Route exact path={`/users/:userId/bookings`} component={UserBookingIndexContainer} />
                     <Route exact path={`/users/:userId/fav`} component={UserFavIndexContainer} /> */}

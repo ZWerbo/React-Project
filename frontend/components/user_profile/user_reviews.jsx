@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { deleteReview } from "../../actions/review_action.js";
 import UserReviewItem from './user_review_item.jsx'
 
 class UserReviews extends React.Component {
@@ -16,7 +17,7 @@ class UserReviews extends React.Component {
         return (
             <div className="user-review-container">
                     <h1 className="your-reviews-header">Your Reviews</h1>
-                {this.props.reviews.map(review =>  {return <UserReviewItem body={review.body} rating={review.rating} restaurant_name={review.restaurant_name} restaurant_id={review.restaurant_id} reviewId={review.id} />})}
+                {this.props.reviews.map(review =>  {return <UserReviewItem body={review.body} rating={review.rating} deleteReview={this.props.deleteReview} restaurant_name={review.restaurant_name} restaurant_id={review.restaurant_id} reviewId={review.id} />})}
             </div>
         )
     }
@@ -35,7 +36,9 @@ console.log(state)
 
 const mDTP = dispatch => {
     return {
-        fetchUser: (user) => dispatch(fetchUser(user))
+        fetchUser: (user) => dispatch(fetchUser(user)),
+        deleteReview: reviewId => dispatch(deleteReview(reviewId))
+
     }
 }
 

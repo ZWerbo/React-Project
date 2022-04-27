@@ -13,6 +13,7 @@ import SearchbarContainer from "./searchbar/searchbar_container";
 import MainPage from './main/main_page.jsx'
 import SearchPage from "./searchbar/search_page";
 import SearchPageContainer from "./searchbar/search_page_container";
+import EditReservation from "./reservations/edit_reservation";
 const App = () => {
   //exact path broke the switch on the profile to make the routes go either way. 
   return (
@@ -38,7 +39,9 @@ const App = () => {
     <Route exact path="/restaurants/:restaurantName/:restaurantId/review" component={ReviewFormContainer}/>
     <Route exact path="/restaurants/:restaurantId/review/:reviewId" component={EditReviewFormContainer}/>
     <ProtectedRoute exact path="/reservations/:reservationId" component={ConfirmationReservationContainer} />
+    <ProtectedRoute exact path="/reservations/:reservationId/edit" component={EditReservation} />
     <ProtectedRoute path="/:userId/profile" component={UserProfileContainer} />
+
     {/* <Route exact path="/restaurants/:restaurantId" component={ReviewIndexContainer}/> */}
     {/* <div className="footer-container"></div> */}
 

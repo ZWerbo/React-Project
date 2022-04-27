@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchAllReservations } from "../../actions/reservation_action";
+import { deleteReservation, fetchAllReservations } from "../../actions/reservation_action";
 import ReservationProfileItem from "./reservation_item";
 
 
@@ -20,9 +20,6 @@ class ReservationProfile extends React.Component {
 
     render() {
         if(!this.props.reservations) return null;
-        // const current = new Date();
-        // current.setDate(current.getDate()-1);
-        // console.log(current)
      
 
         return (
@@ -34,7 +31,7 @@ class ReservationProfile extends React.Component {
                        var newCurrent = current.setDate(current.getDate()-1);
                     if(new Date(reservation.date) >= newCurrent) {
                 
-                        return <ReservationProfileItem reservation={reservation}  />
+                        return <ReservationProfileItem reservation={reservation} deleteReservation={this.props.deleteReservation}  />
 
                     }
                     })}
@@ -47,7 +44,7 @@ class ReservationProfile extends React.Component {
                     var newCurrent = current.setDate(current.getDate()-1);
                     if(new Date(reservation.date) < newCurrent) {
                 
-                        return <ReservationProfileItem reservation={reservation}  />
+                        return <ReservationProfileItem reservation={reservation} deleteReservation={this.props.deleteReservation}  />
 
                     }
                     })}
@@ -74,7 +71,8 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return {
-        fetchAllReservations: () => dispatch(fetchAllReservations())
+        fetchAllReservations: () => dispatch(fetchAllReservations()),
+        deleteReservation: reservationId => dispatch(deleteReservation(reservationId))
     }
 }
 

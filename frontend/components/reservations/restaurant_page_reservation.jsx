@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 class RestaurantPageReservation extends React.Component {
     constructor(props) {
         super(props)
-        this.state ={date: new Date(), time: "4:00", size: 2, email: this.props.currentUserEmail, restaurant_id: this.props.restaurant.id, user_id: '2'}
+        this.state ={date: new Date(), time: "4:00", size: 2, email: this.props.currentUserEmail, restaurant_id: this.props.restaurant.id, user_id: '2', restaurant_name: this.props.restaurant.name}
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     

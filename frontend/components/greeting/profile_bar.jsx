@@ -40,10 +40,10 @@ class ProfileBar extends React.Component {
                                         </Link>
                                     <br />
                                     <br />
-                                    <Link className="reservation-dropdown" to={`/${this.props.currentUser}/profile`}>My Reservations  </Link>
+                                    <Link className="reservation-dropdown" to={`/${this.props.currentUser}/profile/reservations`}>My Reservations  </Link>
                                     <br />
                                     <br />
-                                    <Link className="reviews-dropdown" to={`/${this.props.currentUser}/profile`}>My Reviews  </Link>
+                                    <Link className="reviews-dropdown" to={`/${this.props.currentUser}/profile/reviews`}>My Reviews  </Link>
                                     <br />
                                     <button className="Sign-out-profile-button" onClick={this.props.logout}>
                                         Sign out

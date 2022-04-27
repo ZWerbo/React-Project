@@ -18,21 +18,25 @@ Review.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
 Reservation.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('reservations')
+Favorite.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
 
 
 
 
-user1 = User.create(username:'zachwerb', email:'werbo@gmail.com', password:'password123')
-user2 = User.create(username:'Grace234', email:'grace@gmail.com', password:'password123')
-user3 = User.create(username:'Pauly D', email:'mike@gmail.com', password: 'password123')
-user4 = User.create(username:'Mike the Situation', email:'pauly@gmail.com', password:'password123')
+
+user1 = User.create(username:'zachwerb', email:'werbo@gmail.com', password:'password123', first_name: 'Zach', last_name: 'Werbalowsky')
+user2 = User.create(username:'Grace234', email:'grace@gmail.com', password:'password123',first_name: 'Grace', last_name: 'Mercer')
+user3 = User.create(username:'Pauly D', email:'mike@gmail.com', password: 'password123', first_name: 'Pauly', last_name: 'D Angelo')
+user4 = User.create(username:'Mike the Situation', email:'pauly@gmail.com', password:'password123', first_name: 'Mike', last_name: 'Situacion')
 
 rest1 = Restaurant.create!(
     name: 'Moms Spaghetti', 
     description: 'Here is a Restaurant that is really good, people have said the crem de la crem of what have you. it is solid', 
     hours: '4pm to 10pm',
     cuisine: 'italian',
-    city: 'Portland'
+    city: 'Portland',
+    neighborhood: 'Southeast'
 )
 
 rest2 = Restaurant.create!(
@@ -40,7 +44,8 @@ rest2 = Restaurant.create!(
     description: 'The chef constantly travels into central oregon to get the best beef he possible. The burger is divine. Open all day basically!', 
     hours: '12pm to 10pm',
     cuisine: 'Mexican',
-    city: 'Portland'
+    city: 'Portland',
+    neighborhood: 'Southeast'
     )
     
     
@@ -50,7 +55,8 @@ rest3 = Restaurant.create!(
     description: 'Amazing sushi place and affordable!', 
     hours: '12pm to 9pm',
     cuisine: 'Sushi',
-    city: 'Portland'
+    city: 'Portland',
+    neighborhood: 'Northeast'
     )
         
 rest4 = Restaurant.create!(
@@ -58,7 +64,8 @@ rest4 = Restaurant.create!(
     description: 'No frills burger joint! affordable and delicious!', 
     hours: '12pm to 9pm',
     cuisine: 'Burger',
-    city: 'Portland'
+    city: 'Portland',
+    neighborhood: 'Southwest'
     )
 
 rest5 = Restaurant.create!(
@@ -67,7 +74,8 @@ rest5 = Restaurant.create!(
     Thank you for all of the continued support you have shown us during all the ups and downs of 2020. We look forward to serving you in whatever new capacities we are able to safely do so.', 
     hours: '4pm to 9pm',
     cuisine: 'Italian',
-    city: 'Portland'
+    city: 'Portland',
+    neighborhood: 'Southeast'
     )
 
 rest6 = Restaurant.create!(
@@ -80,7 +88,8 @@ rest6 = Restaurant.create!(
     3 Doors Down Café offers a doff of the hat to Mother Italy and a harmonious affair  with locally procured Pacific Northwest cuisine. ',
     hours: '5pm to 9pm',
     cuisine: 'Italian',
-    city: 'Portland'
+    city: 'Portland',
+    neighborhood: 'Southeast'
 )
         
         file1 = URI.open('https://opentable-zach-seeds.s3.amazonaws.com/pastagum.jpg')

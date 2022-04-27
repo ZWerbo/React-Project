@@ -11,6 +11,10 @@ class Restaurant < ApplicationRecord
         foreign_key: :restaurant_id,
         class_name: :Reservation
 
+    has_many :favorites,
+        foreign_key: :restaurant_id,
+        class_name: :Favorite
+
     
 
 end

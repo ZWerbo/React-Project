@@ -9,34 +9,25 @@ class ReservationProfileItem extends React.Component {
 
 
     render() {
-        // console.log( new Date(this.props.reservation.date))
-        // console.log(new Date())
-
-        // const current = new Date(this.props.reservation.date.setDate(this.props.reservation.date.getDate() + 1))
-        // console.log(current)
-        var info;
-        if(new Date(this.props.reservation.date) < new Date()) {
-            info = (    
-                <div className="reservation-info-profile" >
-            <p className="reservation-profile-info"> <BsClock />  {this.props.reservation.time}</p>
-            <p  className="reservation-profile-info" >  <BsFillPeopleFill /> {this.props.reservation.size}</p>
-            <p  className="reservation-profile-info" type='date'> < BsFillCalendarFill />{this.props.reservation.date}</p>
-
-            </div>)
-        }
         return (
 
-            <div>
+            <div className="single-reservation-profile">
                 
                 {/* {info} */}
-            <h3>Restaurant Name</h3>
-            <div className="reservation-info-profile" >
-            <p className="reservation-profile-info"> <BsClock />  {this.props.reservation.time}</p>
-            <p  className="reservation-profile-info" >  <BsFillPeopleFill /> {this.props.reservation.size}</p>
-            <p  className="reservation-profile-info" type='date'> < BsFillCalendarFill />{this.props.reservation.date}</p>
+            <h2>{this.props.reservation.restaurant_name}</h2>
+                <div className="reservation-info-profile" >
+                <p className="reservation-profile-info"> <BsClock />  {this.props.reservation.time}</p>
+                <p  className="reservation-profile-info" >  <BsFillPeopleFill /> {this.props.reservation.size}</p>
+                <p  className="reservation-profile-info" type='date'> < BsFillCalendarFill />{this.props.reservation.date}</p>
+                </div>
 
-            </div>
-
+                <div className="reservation-modify-delete">
+                    <Link to={`/reservations/${this.props.reservation.id}/edit`}>
+                <button className="reservation-profile-button">Modify</button> 
+                    </Link>
+                    |
+                <button className="reservation-profile-button" onClick={() => this.props.deleteReservation(this.props.reservation.id).then(window.location.reload())}>Delete</button>
+                </div>
             </div>
             )
     }

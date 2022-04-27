@@ -4,6 +4,28 @@
   object-fit: cover;
 }
 
+.image-and-button{
+  display: flex;
+}
+.favorite-restaurant-button {
+  position: absolute;
+  // margin-left: 1250px;
+  margin-left: 500px;
+  margin-top: 33px;
+  width: 235px;
+  height: 52px;
+  border-radius: 3px;
+  background-color: white;
+  border-color: white;
+  font-family: 'Commissioner', sans-serif;
+  cursor: pointer;
+}
+
+.favorite-restaurant-button:hover {
+border-color: crimson;
+background-color: rgb(239, 239, 239);
+}
+
 .restaurant-name {
 border-bottom-style: solid;
 border-bottom: 2px, black;
@@ -46,7 +68,7 @@ font-weight: bolder;
 }
 
 .review-button {
-  background-color: red;
+  background-color: crimson;
   border-radius: 3px;
   height: 40px;
   width: 170px;
@@ -58,7 +80,7 @@ font-weight: bolder;
 }
 
 .delete-button {
-  background-color: red;
+  background-color: crimson;
   border-radius: 3px;
   height: 25px;
   width: 50px;
@@ -72,7 +94,7 @@ font-weight: bolder;
 }
 
 .edit-button {
-  background-color: red;
+  background-color: crimson;
   border-radius: 3px;
   height: 25px;
   width: 50px;
@@ -163,11 +185,15 @@ font-weight: bolder;
   width: 300px;
   height: 300px;
   background-color: white;
-  margin-left: 58%;
+  // margin-left: 58%;
+  left: 976px;
   z-index: 10;
   position: absolute;
-  font-family: 'Overpass', sans-serif;
-  box-shadow: 0px 0px 5px 5px lightgray;
+  // position: fixed;
+  font-family: 'Commissioner', sans-serif;
+  box-shadow: 0px 0px 2px 2px darkgray;
+  margin-top: -107px;
+  padding: 8px;
 }
 
 .restaurant-show-description-items {
@@ -189,3 +215,12 @@ font-weight: bolder;
   font-weight: lighter;
 }
 
+.restaurant-reservation-container {
+  display: flex;
+}
+
+.reservation-space {
+  display: flex;
+  width: 100px;
+  height: 1000px;
+}
