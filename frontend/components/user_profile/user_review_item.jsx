@@ -26,7 +26,7 @@ const UserReviewItem = ({body, rating, restaurant_id, restaurant_name, reviewId,
             <button className="edit-review-profile"><AiOutlineEdit /></button>
             </Link>
             &nbsp;&nbsp;
-                <button className="edit-review-profile" onClick={() => deleteReview(reviewId).then(() => loadingChanges.current = true)}>< BsFillTrashFill /></button>
+                <button className="edit-review-profile" onClick={() => deleteReview(reviewId).then(window.location.reload())}>< BsFillTrashFill /></button>
 
 
             </div>

@@ -28,7 +28,3 @@ document.addEventListener("DOMContentLoaded", () => {
   window.logout= logout
 });
 
-
-// let v = {username: 'zachwerb', password: 'password123'}
-
-// let u = {username: 'zachwerb', email: 'fuckcoding@email.com', password: 'password123'}
