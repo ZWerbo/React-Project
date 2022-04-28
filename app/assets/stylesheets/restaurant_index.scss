@@ -94,8 +94,53 @@ padding-right: 9px;
 
 
 .restaurant-index-footer {
-    width: 100%;
-    height: 500px;
+    // width: 100%;
+    min-height: 300px;
     background-color: rgb(29, 34, 76);
     margin-top: 4%;
+    padding: 50px;
+}
+
+
+
+.zachs-links {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    border-bottom: 1px solid lightgray;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.zach-link-buttons {
+    font-size: 100px;
+    background-color: #1d224c;
+    // text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 60px;
+}
+
+.zach-link-buttons:hover {
+    color: crimson;
+    cursor: pointer;
+}
+
+.my-name{
+    color: white;
+    font-size: 45px;
+    font-family: 'Overpass', sans-serif;
+    padding-right: 50px;
+
+}
+
+.important-info {
+    display: flex;
+   text-align: center;
+    font-family: 'Overpass', sans-serif;
+    font-size: 20px;
+    flex-direction: column;
+    color: white;
+    padding: 20px;
 }

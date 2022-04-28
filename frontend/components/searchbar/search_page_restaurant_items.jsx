@@ -41,6 +41,7 @@ class SearchPageRestaurantItem extends React.Component {
                             <div className="review-count">{count} Reviews</div> 
                             <div className="cuisine-index">{this.props.restaurant.cuisine}</div> 
                             </div>
+                            <div className="rest-neighborhood">{this.props.restaurant.neighborhood}, Portland</div>
 
                             <div className="search-buffer-div"></div>
                             <div className="searchpage-times-buttons">
