@@ -25,7 +25,7 @@ class ConfirmationReservation extends React.Component {
 
     handleSubmit(e) {
         this.props.updateReservation(this.state)
-        // .then(this.props.history.push(`/${this.props.currentUserId}/profile`))
+        .then(this.props.history.push(`/${this.props.currentUserId}/profile/reservations`))
         
     }
 

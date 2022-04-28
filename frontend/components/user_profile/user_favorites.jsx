@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { connect } from "react-redux"
 import { deleteFavorite, fetchFavorites } from "../../actions/favorite_action"
 import React from "react"
@@ -6,15 +6,23 @@ import UserFavoriteItem from "./user_favorite_item"
 
 const UserFavorites = ({fetchFavorites, currentUserId, favorites, deleteFavorite}) => {
     
+    const loadingChanges = useRef(true)
+
+
     useEffect(() => {
-        fetchFavorites({["userId"]: currentUserId})
-    },[])
+        if(loadingChanges.current) {
+            // debugger
+            fetchFavorites({["userId"]: currentUserId})
+            loadingChanges.current = false
+        } 
+    },[favorites])
+
 
     return (
         <div className="user-favorite-container">
-                <div>Saved Restauraunts</div>
+                <div className="saved-restaurants">Saved Restauraunts</div>
                 {favorites.map(favorite => {
-                    return < UserFavoriteItem favorite={favorite} deleteFavorite={deleteFavorite} />
+                    return < UserFavoriteItem loadingChanges={loadingChanges} favorite={favorite} deleteFavorite={deleteFavorite} />
                 })}
         </div>
     )
@@ -23,7 +31,6 @@ const UserFavorites = ({fetchFavorites, currentUserId, favorites, deleteFavorite
 
 
 const mSTP = (state) => {
-    console.log(state)
     return {
         currentUserId: state.session.id,
         favorites: Object.values(state.entities.favorites)

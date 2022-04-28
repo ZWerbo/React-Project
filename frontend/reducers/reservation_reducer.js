@@ -11,7 +11,7 @@ const reservationReducer = (state={}, action) => {
         case RECEIVE_RESERVATION:
             newState[action.reservation.id] = action.reservation
             return newState
-        case REMOVE_REVIEW:
+        case REMOVE_RESERVATION:
             delete newState[action.reservationId]
             return newState
         default:

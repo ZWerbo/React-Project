@@ -30,5 +30,5 @@ export const createFavorite = favorite => dispatch => {
 
 export const deleteFavorite = favoriteId => dispatch => {
     return favUtil.deleteFavorite(favoriteId) 
-    .then(favoriteId => dispatch(removeFavorite(favoriteId)) )
+    .then(favoriteId => dispatch(removeFavorite(favoriteId)))
 }

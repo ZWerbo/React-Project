@@ -32,7 +32,8 @@ class ProfileBar extends React.Component {
     
             <CgProfile  onClick={this.handleDropDown} className="CgProfile"/>
             { this.state.display ? (
-                        // <div className="profile-bar-other" onMouseLeave={this.hideDropDown}>
+                        <div className="profile-bar-other">
+                            {/* <div></div> */}
                             <div className="nav-bar-profile-show" onMouseLeave={this.hideDropDown}>
                                 <h3 className="welcome-back">Welcome {this.props.currentUsername}</h3>
                                     <Link className="profile-dropdown" to={`/${this.props.currentUser}/profile`}>
@@ -49,7 +50,8 @@ class ProfileBar extends React.Component {
                                         Sign out
                                     </button>
                             </div>
-                        // </div>
+
+                        </div>
                     ) :
                         null
                     }

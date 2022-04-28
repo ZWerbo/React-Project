@@ -4,14 +4,15 @@ import { Link } from "react-router-dom"
 import { BsFillTrashFill } from 'react-icons/bs'
 import {AiOutlineEdit } from 'react-icons/ai'
 
-const UserReviewItem = ({body, rating, restaurant_id, restaurant_name, reviewId, deleteReview}) => {
-    console.log(restaurant_name)
+const UserReviewItem = ({body, rating, restaurant_id, restaurant_name, reviewId, deleteReview, loadingChanges}) => {
     return (
 
         <div className="single-user-review">
-            <h2>
+            <Link className="rest-link-profile" to={`/restaurants/${restaurant_id}`}>
+            <div className="rest-review-name-profile">
             {restaurant_name}
-            </h2>
+            </div>
+            </Link>
             {[...Array(rating)].map(star => {
                     return <AiFillStar color="red" />
                 } ) }
@@ -25,7 +26,7 @@ const UserReviewItem = ({body, rating, restaurant_id, restaurant_name, reviewId,
             <button className="edit-review-profile"><AiOutlineEdit /></button>
             </Link>
             &nbsp;&nbsp;
-                <button className="edit-review-profile" onClick={() => deleteReview(reviewId).then(window.location.reload())}>< BsFillTrashFill /></button>
+                <button className="edit-review-profile" onClick={() => deleteReview(reviewId).then(() => loadingChanges.current = true)}>< BsFillTrashFill /></button>
 
 
             </div>

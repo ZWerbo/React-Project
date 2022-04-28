@@ -23,10 +23,8 @@ class Api::FavoritesController < ApplicationController
     end
 
     def destroy
-        debugger
-
         @favorite = Favorite.find(params[:id])
-        @reservation.destroy!
+        @favorite.destroy!
         render :show
     end
 

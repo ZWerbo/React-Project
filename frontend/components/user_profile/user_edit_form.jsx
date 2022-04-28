@@ -34,10 +34,10 @@ class UserEditForm extends React.Component {
 
                     <div className="first-last-row">
                     <label> Firstname
-                    <input className="edit-name-input" type="text" />
+                    <input className="edit-name-input" type="text" value={this.state.first_name} onChange={this.update('first_name')} />
                     </label>
                     <label> &nbsp;&nbsp;&nbsp; Lastname
-                    <input type="text" className="edit-name-input2" />
+                    <input type="text" className="edit-name-input2" value={this.state.last_name} onChange={this.update('last_name')} />
                     </label>
                     </div>
 

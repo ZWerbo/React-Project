@@ -24,5 +24,11 @@ export const fetchAllUsers = () => dispatch => {
 
 export const updateUser = user => dispatch => {
     return usersApiUtil.updateUser(user) 
-    .then(users => dispatch(receiveUser(user)))
+    .then(user => dispatch(receiveUser(user)))
+}
+
+
+export const fetchUser = (user) => dispatch => {
+    return usersApiUtil.fetchUser(user)
+    .then(user => dispatch(receiveUser(user)))
 }

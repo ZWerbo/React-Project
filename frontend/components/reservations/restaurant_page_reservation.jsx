@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 class RestaurantPageReservation extends React.Component {
     constructor(props) {
         super(props)
-        this.state ={date: new Date(), time: "4:00", size: 2, email: this.props.currentUserEmail, restaurant_id: this.props.restaurant.id, user_id: '2', restaurant_name: this.props.restaurant.name}
+        this.state ={date: new Date(), time: "4:00", size: 2, email: this.props.currentUserEmail, restaurant_id: this.props.restaurant.id, user_id: 2, restaurant_name: this.props.restaurant.name}
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     
@@ -16,10 +16,9 @@ class RestaurantPageReservation extends React.Component {
     //I still dod not understand how to pass anything to this new page. Its honestly getting wack. 
     handleSubmit(e) {
         e.preventDefault();
+        // debugger
         this.props.createReservation(this.state)
         .then(() => this.props.history.push(`/reservations/${this.props.reservations[this.props.reservations.length - 1].id}`))
-       
-        
     }
 
 
@@ -88,17 +87,9 @@ class RestaurantPageReservation extends React.Component {
                             </select>
                         </label>
                     <div className="submit-reservation-container">
-                    {/* <Link to={{pathname:'/reservation/details', 
-                        state: {
-                        date: this.state.date,
-                        size: this.state.size,
-                        time: this.state.time,
-                        currentUserId: this.props.currentUserId,
-                        restaurantId: this.props.restaurant.id}}}> */}
-
                     <button className="submit-reservation" 
                     type="submit">Find a Table</button>
-                {/* </Link> */}
+         
                     </div>
                   
 

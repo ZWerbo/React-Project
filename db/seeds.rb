@@ -70,8 +70,7 @@ rest4 = Restaurant.create!(
 
 rest5 = Restaurant.create!(
     name: 'Cibo', 
-    description: 'We are a neighborhood Italian restaurant with wood-fired pizza, housemade pastas, delicious cocktails and dessert. Located on the corner of Division and 35th Place, we are in the heart of SE Portland.
-    Thank you for all of the continued support you have shown us during all the ups and downs of 2020. We look forward to serving you in whatever new capacities we are able to safely do so.', 
+    description: 'We are a neighborhood Italian restaurant with wood-fired pizza, housemade pastas, delicious cocktails and dessert. Located on the corner of Division and 35th Place, we are in the heart of SE Portland. Thank you for all of the continued support you have shown us during all the ups and downs of 2020. We look forward to serving you in whatever new capacities we are able to safely do so.', 
     hours: '4pm to 9pm',
     cuisine: 'Italian',
     city: 'Portland',
@@ -80,12 +79,7 @@ rest5 = Restaurant.create!(
 
 rest6 = Restaurant.create!(
     name: '3 Doors Down Café',
-    description: 'Inclusive from the moment you grace the doorway, 
-    3 Doors Down Café and Lounge has a keen acumen for speeding up your wind down, 
-    flipping the switch from maddening day to welcoming  respite.  A playful, thoughtful, 
-    and engaging dining experience begins with our dynamic wine list or a creative cocktail, 
-    then flows effortlessly to the inventive starters, house made pastas or perfectly grilled fish and meats.  
-    3 Doors Down Café offers a doff of the hat to Mother Italy and a harmonious affair  with locally procured Pacific Northwest cuisine. ',
+    description: 'Inclusive from the moment you grace the doorway, 3 Doors Down Café and Lounge has a keen acumen for speeding up your wind down, flipping the switch from maddening day to welcoming  respite.  A playful, thoughtful, and engaging dining experience begins with our dynamic wine list or a creative cocktail, then flows effortlessly to the inventive starters, house made pastas or perfectly grilled fish and meats.  3 Doors Down Café offers a doff of the hat to Mother Italy and a harmonious affair  with locally procured Pacific Northwest cuisine. ',
     hours: '5pm to 9pm',
     cuisine: 'Italian',
     city: 'Portland',

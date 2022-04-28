@@ -3,7 +3,7 @@
 }
 
 .profile-bar-other{
-
+// display: flex;
 }
 
 .filler-profile{
@@ -24,10 +24,12 @@
     width: 200px;
     height: 200px;
     z-index: 5;
-    margin-left: -10%;
+    margin-left: -12.5%;
     background-color: rgb(251, 251, 251);   
     border-radius: 5px;
-    margin-top: .25%
+    margin-top: .25%;
+    padding: 10px;
+    font-family: 'Commissioner', sans-serif;
 }
 .welcome-back {
     border-bottom-style: solid;
@@ -46,14 +48,14 @@
 }
 
 .reservation-dropdown {
-    margin-right: 39%;
+    margin-right: 35%;
     color: black;
     text-decoration: none;
     // padding: 5px;
 }
 
 .reviews-dropdown {
-    margin-right: 53%;
+    margin-right: 52%;
     color: black;
     text-decoration: none;
     // padding: 5px;

@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
         e.preventDefault();
         this.props.clearErrors
         const user = Object.assign({}, this.state)
-        this.props.signup(user)
+        this.props.signup(user).then(this.props.closeModal)
     }
 
     renderErrors() {
