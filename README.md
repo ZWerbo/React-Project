@@ -21,4 +21,4 @@ opentabl is a clone of the restaurant reservation website opentable (clever rena
 ------------
 
 <!-- <img width="1344" alt="opentablUserAuth" src="https://user-images.githubusercontent.com/87534348/161309074-e4f1810f-16c0-493f-b45b-1e7cc6e1b044.png"> -->
-![login](https://user-images.githubusercontent.com/87534348/166074609-565a7cb9-40d1-42ec-a779-2efe924f5c1b.gif)
+![login](https://user-images.githubusercontent.com/87534348/166074817-7b18c24d-371f-409b-9482-f6c513dc167b.gif)
