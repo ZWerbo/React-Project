@@ -30,5 +30,4 @@ Built a modal that is used on the session create form and the user create form. 
 Built a user profile that gives the user the ability to browse all pertinent info. From saved restaurants, reservations, and written reviews, then gives them the ability to edit and delete if so desired!
 - Each tab is a distinct route within the profile component making it inacessible to those other than the person logged in. 
 
-![profileactivity](https://user-images.githubusercontent.com/87534348/166076547-f8764ce2-47c5-409d-a5a0-1ee290501415.gif)
-
+![profileactivity](https://user-images.githubusercontent.com/87534348/166076769-edc10802-9e7a-4559-bfe4-8d833c35f088.gif)
