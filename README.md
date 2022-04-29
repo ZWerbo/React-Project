@@ -17,7 +17,7 @@ opentabl is a clone of the restaurant reservation website opentable (clever rena
 - PostgreSQL
 - Webpack
 
-**User Auth**
+**User Auth**!
 ------------
 - Built a modal that is used on the session create form and the user create form. In order to easily navigate features of site we have a nice demo user login!
 - User authentication is implemented on both frontend and backend with presence validations. Uniqueness contraints (for username and email) are enforced in models and database. Upon a successful signup, the password is hashed using BCrypt and saved to the database as a password digest. 
@@ -30,7 +30,10 @@ opentabl is a clone of the restaurant reservation website opentable (clever rena
 -------------
 - Constructed a search bar that filters the results in the real time. 
 - The results can be filtered by the restaurant and cuisine on the homepage and the neighborhood, restaurant, and cuisine on the search page. The search page also contain gives the User the most common neighborhoods and cuisine. 
-https://user-images.githubusercontent.com/87534348/166081203-8716abb0-3bd7-4d52-8e44-d1c051c32a0b.mov
+![searchbar](https://user-images.githubusercontent.com/87534348/166081259-da641b2a-f5e8-469c-bde0-6d1b7ca62ea6.gif)
+
+
+
 
 **User Profile**
 ------------------
