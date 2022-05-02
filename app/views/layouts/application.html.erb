@@ -5,6 +5,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+      <meta property="og:title" content="Opentable" />
+     <meta property='og:image' content="<%= image_url('ajar.png') %>"/>
+     <meta property="og:description"
+       content="Ajar table is a clone of opentable."
+     />
+     <meta property="og:url"
+       content="https://opentabl.herokuapp.com/#/"
+     />
+
  <link href="https://fonts.googleapis.com/css2?family=Overpass&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jaldi&family=Manrope:wght@200&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
