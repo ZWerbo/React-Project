@@ -1,5 +1,3 @@
-import SearchbarContainer from "../searchbar/searchbar_container";
-import RestaurantIndexContainer from "../restaurant/restaurant_index_container";
 import { useState } from "react";
 import React from "react";
 import SearchPageBar from "./searchbar_searchpage";
@@ -10,7 +8,7 @@ const SearchPage = ({}) => {
     return (
         <div>
             <SearchPageBar searchInput={searchInput} setSearchInput={setSearchInput} />
-            <SearchPageRestaurants searchInput={searchInput} />
+            <SearchPageRestaurants searchInput={searchInput} setSearchInput={setSearchInput} />
         </div>
     )
 }

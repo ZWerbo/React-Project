@@ -5,7 +5,6 @@ const SearchPageBar =({searchResult, searchInput, setSearchInput}) => {
     // const [searchInput, setSearchInput] = useState('')
 
     const update = (e) => {
-        
         setSearchInput(e.target.value) 
         // setUpdated(Math.random() * 1000)
     }
@@ -36,7 +35,7 @@ const SearchPageBar =({searchResult, searchInput, setSearchInput}) => {
                
                 
                     {/* <input type="text" className="search-input-searchbar" /> */}
-                    <input type="text" className="searchpage-input-searchbar" placeholder="Restaurant, or Cuisine" value={searchInput} onChange={update} />
+                    <input type="text" className="searchpage-input-searchbar" placeholder="Neighborhood, Restaurant, or Cuisine" value={searchInput} onChange={update} />
                     <button onSubmit={handleSubmit} className="search-bar-button">Find a table</button>
                    </form>
                </div>

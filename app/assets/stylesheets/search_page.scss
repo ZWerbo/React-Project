@@ -17,8 +17,8 @@
  .left-side-searchpage{
     width: 400px;
     min-height: 500px;
-    text-align: center;
     font-family: 'Commissioner', sans-serif;
+    display: flex;
  }
 
 
@@ -136,9 +136,27 @@
 .neigborhood-search {
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid lightgray;
+    text-align: left;
+    width: 200px;
+    padding: 20px;
+
 }
 
 .neighborhood {
     padding: 5px;
 }
 
+.neigh-cuise{
+    display: flex;
+    flex-direction: column;
+}
+
+.price-buttons-money {
+    display: flex;
+    flex-direction: row;
+}
+.left-buffer-div {
+    width: 100px;
+    height: 300px;
+}
