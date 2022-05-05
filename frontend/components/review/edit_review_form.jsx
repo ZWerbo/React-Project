@@ -45,7 +45,7 @@ class EditReview extends React.Component {
                         value={this.state.body} 
                         onChange={this.update('body')}></textarea>
                     <br />
-                    <button className="edit-submit-button" type="submit" >submit</button>
+                    <button className="edit-submit-button" type="submit" >Update Review</button>
 
                 </form>
             </div>

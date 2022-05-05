@@ -49,7 +49,7 @@ class CreateReview extends React.Component {
                     
                          </textarea>
                     <br />
-                    <button className="create-submit-button" type="submit" >submit</button>
+                    <button className="create-submit-button" type="submit" >Submit</button>
 
                 </form>
             </div>
