@@ -18,4 +18,4 @@ const mDTP = (dispatch) => {
     }   
 }
 
-// export default connect(mSTP, mDTP)(RestaurantPageReservation)
+export default connect(mSTP, mDTP)(RestaurantPageReservation)
