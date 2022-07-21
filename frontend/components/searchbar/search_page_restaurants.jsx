@@ -54,7 +54,7 @@ const SearchPageRestaurantIndex = (props) => {
             props.setSearchInput = isChecked
         }
 
-        console.log(props.SearchInput)
+        // console.log(props.SearchInput)
         if(restaurant.name.toLowerCase().includes(props.searchInput.toLowerCase()) || restaurant.cuisine.toLowerCase().includes(props.searchInput.toLowerCase()) || restaurant.neighborhood.toLowerCase().includes(props.searchInput.toLowerCase())) {
             return <SearchPageRestaurantItem searchInput={props.searchInput} restaurant={restaurant} reviews={props.reviews} key={restaurant.id}/>
 
